@@ -3,22 +3,19 @@
     <head><link rel="stylesheet" type="text/css" href="main.css"></head>
 
     <div>
-        <center><h1>Yo Waddup SLS project</h1></center>
-        <center><h1>for cs 4400</h1></center>
+        <center><h1>Login</h1></center>
     </div>
     
-    <button id=createbut type="button" onclick="createGame()"=>i wanna log in</button>
+    <form action="logIn.php" method="post">
+    Username:  
+    <input type="text" name="username"><br>
+    Password:  
+    <input type="password" name="password"><br>
+    <input type="submit" value="Submit">
+
+    <form action="registration.php">
+        <input type="submit" value="Register" />
+    </form>
     
-    <button id=logbut type="button" onclick="joinGame()"=>asdasd</button>
     
-    
-    <script>
-    function createGame(){
-        window.location.assign("login.html")
-    }
-    
-    function joinGame(){
-        window.location.assign("ddasdafa.html")
-    }
-    </script>
 </html>
