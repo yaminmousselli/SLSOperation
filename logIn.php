@@ -2,63 +2,89 @@
 <html>
 <body>
 
+<script>
+function goCityScientist(){
+    window.location.assign("AddDataPoint.php")
+}
 
-test
+function goAdmin(){
+    window.location.assign("ChooseFunctionalityAdmin.html")
+}
+
+function goCityOfficial(){
+    window.location.assign("ChooseFunctionalityOfficial.html")
+}
+</script>
+
 <?php
 
 //echo "trying<br>";
 
 $conn = mysql_connect("localhost","compuser","yeahsure");
 mysql_select_db("4400DatabaseProject",$conn);
-echo "line 13".mysql_error();
+
 
 if (!$conn) {
     echo "Unable to connect to DB: " . mysql_error();
     exit;
 }
-echo "why";
+
 //$theQuery = "SELECT * FROM User WHERE username ='".$_POST['username']."' AND password = '".$POST_['password']."'";
 
-$theQuery = "SELECT * FROM `User`";
+$theQuery = "SELECT * FROM User";
 
 //echo "this is the query: ".$theQuery."<br>";'''
 
 $checkEmpty = mysql_query($theQuery);
-echo "heres ur error at checkempty<br><br>";
+
 echo mysql_error();
 
-echo $checkEmpty;
 
 //echo "<br>the query returned: ".$checkEmpty."<br>";
 
 $login = false;
-echo "here comes the while loop<br>";
+
 while($row = mysql_fetch_assoc($checkEmpty)) {
 
-    echo $row["username"];
-    echo $row["password"];
-    echo $_POST["username"];
-    echo $_POST["password"];
+
     //echo "tried while<br>";
     if($row["username"] == $_POST["username"]){
         if($row["password"] == $_POST["password"]){
             $login = true;
-            echo "login is true";
+
         }
     }
 }
 
 if($login){
-    redirect_to("twitter.com/briceedelman");
+    $theResponse = mysql_query("SELECT userType FROM User WHERE username='".$_POST["username"]."'");
+    $theirType = mysql_fetch_assoc($theResponse)["userType"];
+    
+    if($theirType == "cityScientist"){
+        echo "<script>goCityScientist();</script>";
+    }
+    
+    if($theirType == "cityOfficial"){
+        echo "<script>goCityOfficial();</script>";
+    }
+    
+    if($theirType == "admin"){
+        echo "<script>goAdmin();</script>";
+    }
+    
     
 }
 
 if(!$login){
-    echo "wow you suck";
+    echo "Login failed. Try again?";
+    echo '<form action="index.html"><input type="submit" value="Back" /></form>';
     
 }
 //echo "tried";
 
 ?>
+
+
+
 </body>
 </html>
