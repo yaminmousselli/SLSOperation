@@ -20,9 +20,9 @@ function pointFailed(){
     $theValues = "'0','".$_POST["newDataValue"]."','".$_POST["newDataLocation"]."','".$_POST["newDataTime"]."','".$_POST["newDataType"]."'";
     $theQuery = "INSERT INTO DataPoint (isApproved,dataValue,locationName,recordTime,type) VALUES (".$theValues.")";
     $theResponse = mysql_query($theQuery);
-    
+    echo mysql_error();
     if(!$theResponse){
-        echo "<script>pointFailed();</script>" //this will end the php because page change
+        echo "<script>pointFailed();</script>"; //this will end the php because page change
     }
 
     
