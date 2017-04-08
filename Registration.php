@@ -27,27 +27,27 @@
     </script>
     
     User Type:
-    <select name="userType" id="usrType" required>
+    <select name="userType" id="usrType" onchange="showOrHide()" required>
         <option>City Scientist</option>
         <option>City Official</option>
     </select><br>
     State: <select name="officialState" id='offStateSelect'>
         <?php
         
-        $conn = mysql_connect("localhost","compuser","yeahsure");
-        mysql_select_db("4400DatabaseProject",$conn);
-        echo mysql_error();
+        $conn = mysqli_connect("localhost","compuser","yeahsure");
+        mysqli_select_db("4400DatabaseProject",$conn);
+        echo mysqli_error();
 
         if (!$conn) {
-            echo "Unable to connect to DB: " . mysql_error();
+            echo "Unable to connect to DB: " . mysqli_error();
             exit;
         }
 
         
         $theQuery = "SELECT state FROM CityState";
-        $theResponse = mysql_query($theQuery);
+        $theResponse = mysqli_query($theQuery);
 
-        while($row = mysql_fetch_assoc($theResponse)) {
+        while($row = mysqli_fetch_assoc($theResponse)) {
             echo "<option>".$row["state"]."</option>";
         }
         ?>
@@ -56,20 +56,20 @@
     City: <select name="officialCity" id="offCitySelect">
         <?php
         
-        $conn = mysql_connect("localhost","compuser","yeahsure");
-        mysql_select_db("4400DatabaseProject",$conn);
-        echo mysql_error();
+        $conn = mysqli_connect("localhost","compuser","yeahsure");
+        mysqli_select_db("4400DatabaseProject",$conn);
+        echo mysqli_error();
 
         if (!$conn) {
-            echo "Unable to connect to DB: " . mysql_error();
+            echo "Unable to connect to DB: " . mysqli_error();
             exit;
         }
 
         
         $theQuery = "SELECT city FROM CityState";
-        $theResponse = mysql_query($theQuery);
+        $theResponse = mysqli_query($theQuery);
 
-        while($row = mysql_fetch_assoc($theResponse)) {
+        while($row = mysqli_fetch_assoc($theResponse)) {
             echo "<option>".$row["city"]."</option>";
         }
         ?>
@@ -83,22 +83,19 @@
     <script>
     document.write("lmao");
     
-    var useType = getElementById('usrType');
+    var useType = document.getElementById('usrType');
     
     function showOrHide(){
-        document.write("boi");
         if(useType.value == "City Official"){
-            getElementById("offStateSelect").style.display = "none";
-            getElementById("offCitySelect").style.display = "none";
+            document.getElementById("offStateSelect").style.display = "none";
+            document.getElementById("offCitySelect").style.display = "none";
         }
         
         if(useType.value == "City Scientist"){
-            getElementById("offStateSelect").style.display = "block";
-            getElementById("offCitySelect").style.display="block";
+            document.getElementById("offStateSelect").style.display = "block";
+            document.getElementById("offCitySelect").style.display="block";
         }
     }
-    showOrHide();
-    setInterval(showOrHide,100);
     
 
     </script>

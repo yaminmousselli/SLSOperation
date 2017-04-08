@@ -1,22 +1,46 @@
 <html>
 
-    <head><link rel="stylesheet" type="text/css" href="main.css"></head>
+    <head>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
 
-    <div>
-        <center><h1>Login</h1></center>
+    <script type="text/javascript" src="js/login.js"></script>
+    </head>
+
+    <header>Operation SLS</header>
+    
+    <div id="container">
+        <div class="sidebar" id="leftSidebar">
+            <img src="img/working.jpg"></img>
+        </div>
+        
+        <div id="mainContent">
+            <div>
+                <h2>Login</h2>
+            </div>
+            
+            <form action="LogIn.php" method="post">
+                <div class="loginFormEntry">
+                    <label>Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+
+                <div class="loginFormEntry">
+                    <label>Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <input type="submit" value="Log In">
+            </form>
+
+            <p>Don't have an account yet?</p>
+            <button id="goToRegistration" value="Register" onclick="goToRegistration()">Register</button>
+        </div>
+
+        <div class="sidebar" id="rightSidebar">
+            <img src="img/working.jpg"></img>
+        </div>
     </div>
-    
-    <form action="logIn.php" method="post">
-        Username:  
-        <input type="text" name="username"><br>
-        Password:  
-        <input type="password" name="password"><br>
-        <input type="submit" value="Submit">
-    </form>
-    
-    <form action="registration.php">
-        <input type="submit" value="Register" />
-    </form>
     
     
 </html>
