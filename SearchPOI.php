@@ -16,39 +16,48 @@
                 <h3>View POIs</h3>
             </div>
             
-            
-            <div class="viewEntry">
-                <label for="poiNameSelect">POI Location Name</label>
-                <select id="poiNameSelect" name="poiNameSelect"></select>
-            </div>
+            <form action="SearchPOI.php" method="post">  
+                <div class="viewEntry">
+                    <label for="poiNameSelect">POI Location Name</label>
+                    <select id="poiNameSelect" name="poiNameSelect"></select>
+                </div>
 
-            <div class="viewEntry">
-                <label for="citySelect">City</label>
-                <select id="citySelect" id="citySelect"></select>
-            </div>
+                <div class="viewEntry">
+                    <label for="citySelect">City</label>
+                    <select id="citySelect" name="citySelect"></select>
+                </div>
 
-            <div class="viewEntry">
-                <label for="stateSelect">State</label>
-                <select id="stateSelect"></select>
-            </div>
+                <div class="viewEntry">
+                    <label for="stateSelect">State</label>
+                    <select id="stateSelect" name="stateSelect"></select>
+                </div>
 
-            <div class="viewEntry">
-                <label for="zipSelect">Zip Code</label>
-                <input type="text" name="zipCode">
-            </div>
+                <div class="viewEntry">
+                    <label for="zipSelect">Zip Code</label>
+                    <input type="text" id="zipCode" name="zipCode">
+                </div>
 
-            <div class="viewEntry">
-                <label for="poiNameSelect">Flagged?</label>
-            </div>
+                <div class="viewEntry">
+                    <label for="poiNameSelect">Flagged?</label>
+                    <input type="checkbox" id="isFlagged" name="isFlagged" value="isFlagged">
+                </div>
 
-            <div class="viewEntry">
-                <label for="poiNameSelect">Date Flagged</label>
+                <div class="viewEntry" id="dateFlaggedEntry">
+                    <label for="date">Date Flagged</label>
+                    <input type="date" id="dateFlaggedStart" name="dateFlagedStart"> <p>to</p> <input type="date" id="dateFlagedEnd" name="dateFlagedEnd"> 
+                </div>
+
+                <div id="filterControls">
+                    <input type="submit" value="Apply Filters">
+                    <button type="button" onclick="resetFilters()">Reset Filter</button>
+                </div>
+            </form>
+            <div class="back">
+                <button onclick="goToFunctionalityOfficial()">Back</button>
             </div>
         </div>
 
-        <div class="logout">
-            <button onclick="goToLogin()">Log out</button>
-        </div>
+
     </div>
     
     

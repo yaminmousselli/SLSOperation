@@ -1,0 +1,35 @@
+#mainContent {
+    box-sizing: border-box;
+    width: 30%;
+    margin: auto;
+    padding: 2em;
+    border-radius: 5px;
+    background-color:#dee4ed;
+}
+
+h3 {
+    margin: 0;
+    padding: 0 0 1em 0;
+    font-family: 'Carrois Gothic', sans-serif;
+    font-size: 40
+}
+
+label {
+    display: block;
+    padding: 0 0 0.5em 0;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+
+.viewEntry p {
+    font-family: sans-serif;
+    display: inline;
+    margin: 0;
+    padding: 0 5px;
+}
+
+
+.viewEntry {
+    padding-bottom: 1em;
+}
