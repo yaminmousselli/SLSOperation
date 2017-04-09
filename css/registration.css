@@ -2,7 +2,6 @@ body {
     margin: 0;
     min-width: 1300px;
 }
-
 /* Sections of the page */
 header {
     min-height: 120px;
@@ -13,22 +12,16 @@ header {
     font-size: 60px;
     font-family: 'Carrois Gothic', sans-serif;
 }
+
 #mainContent {
     box-sizing: border-box;
     float: left;
-    margin: 0 15% 0 15%;
+    margin: 0 40% 0 40%;
     width: 20%;
     padding: 2em;
     border-radius: 5px;
     background-color:#dee4ed;
 }
-
-#rightSidebar {
-    float: right;
-    width: 25%;
-
-}
-
 .sidebar img {
     width: 100%;
 }
