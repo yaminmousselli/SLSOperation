@@ -18,7 +18,7 @@
                 <h2>Registration</h2>
             </div>
 
-            <form action="" method="post">
+            <form action="index.html" method="post"> <!-- index.html might change-->
                 <div class="registrationFormEntry">
                     <label>Username</label>
                     <input type="text" name="username" id="username" required>
@@ -115,7 +115,7 @@
             document.getElementById("offStateSelect").style.display = "block";
             document.getElementById("offCitySelect").style.display="block";
         }
-    }  
+    }
       </script>
   </form>
 </html>
