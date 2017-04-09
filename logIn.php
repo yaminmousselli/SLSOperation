@@ -3,15 +3,15 @@
 <body>
 
 <script>
-function goCityScientist(){
+function goCityScientist() {
     window.location.assign("AddDataPoint.php")
 }
 
-function goAdmin(){
+function goAdmin() {
     window.location.assign("ChooseFunctionalityAdmin.html")
 }
 
-function goCityOfficial(){
+function goCityOfficial() {
     window.location.assign("ChooseFunctionalityOfficial.html")
 }
 </script>
@@ -48,7 +48,7 @@ while($row = mysql_fetch_assoc($checkEmpty)) {
 
 
     //echo "tried while<br>";
-    if($row["username"] == $_POST["username"]){
+    if($row["username"] == $_POST["username"]) {
         if($row["password"] == $_POST["password"]){
             $login = true;
 
@@ -59,32 +59,27 @@ while($row = mysql_fetch_assoc($checkEmpty)) {
 if($login){
     $theResponse = mysql_query("SELECT userType FROM User WHERE username='".$_POST["username"]."'");
     $theirType = mysql_fetch_assoc($theResponse)["userType"];
-    
-    if($theirType == "cityScientist"){
+
+    if($theirType == "cityScientist") {
         echo "<script>goCityScientist();</script>";
     }
-    
-    if($theirType == "cityOfficial"){
+
+    if($theirType == "cityOfficial") {
         echo "<script>goCityOfficial();</script>";
     }
-    
-    if($theirType == "admin"){
+
+    if($theirType == "admin") {
         echo "<script>goAdmin();</script>";
     }
-    
-    
 }
 
 if(!$login){
     echo "Login failed. Try again?";
     echo '<form action="index.html"><input type="submit" value="Back" /></form>';
-    
+
 }
 //echo "tried";
 
 ?>
-
-
-
-</body>
+  </body>
 </html>
