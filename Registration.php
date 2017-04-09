@@ -96,7 +96,9 @@
         ?>
       </select>
 
-      <br><input type=submit value="Submit">
+      <br><input type=submit value="Submit" id="btnSubmit">
+
+      <button onclick=goToLogin() id="btnCancel"> Cancel </button> 
 
       <script>
         var useType = document.getElementById('usrType');
