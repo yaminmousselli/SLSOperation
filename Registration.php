@@ -2,17 +2,13 @@
 <html>
 
     <head>
-      <link rel="stlesheet" type="text/css" href="css/registration.css">
+      <link rel="stylesheet" type="text/css" href="css/registration.css">
       <script type="text/javascript" src="js/registration.js"></script>
     </head>
 
     <header>Operation SLS</header>
 
     <div id="container">
-        <div class="sidebar" id="leftSidebar">
-            <img src="img/working.jpg"></img>
-        </div>
-
         <div id="mainContent">
             <div>
                 <h2>Registration</h2>
