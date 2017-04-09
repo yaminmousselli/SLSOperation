@@ -1,3 +1,3 @@
 function goToRegistration() {
-	window.location.assign("Registration.php")
+    window.location.assign("Registration.php")
 }
