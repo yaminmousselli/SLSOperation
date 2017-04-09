@@ -57,19 +57,19 @@
 
       State: <select name="officialState" id='offStateSelect'>
         <?php
-        $conn = mysqli_connect("localhost","compuser","yeahsure");
-        mysqli_select_db("4400DatabaseProject",$conn);
-        echo mysqli_error();
+        $conn = mysql_connect("localhost","compuser","yeahsure");
+        mysql_select_db("4400DatabaseProject",$conn);
+        echo mysql_error();
 
         if (!$conn) {
-            echo "Unable to connect to DB: " . mysqli_error();
+            echo "Unable to connect to DB: " . mysql_error();
             exit;
         }
 
         $theQuery = "SELECT state FROM CityState";
-        $theResponse = mysqli_query($theQuery);
+        $theResponse = mysql_query($theQuery);
 
-        while ($row = mysqli_fetch_assoc($theResponse)) {
+        while ($row = mysql_fetch_assoc($theResponse)) {
             echo "<option>".$row["state"]."</option>";
         }
         ?>
@@ -78,19 +78,19 @@
       City: <select name="officialCity" id="offCitySelect">
         <?php
 
-        $conn = mysqli_connect("localhost","compuser","yeahsure");
-        mysqli_select_db("4400DatabaseProject",$conn);
-        echo mysqli_error();
+        $conn = mysql_connect("localhost","compuser","yeahsure");
+        mysql_select_db("4400DatabaseProject",$conn);
+        echo mysql_error();
 
         if (!$conn) {
-            echo "Unable to connect to DB: " . mysqli_error();
+            echo "Unable to connect to DB: " . mysql_error();
             exit;
         }
 
         $theQuery = "SELECT city FROM CityState";
-        $theResponse = mysqli_query($theQuery);
+        $theResponse = mysql_query($theQuery);
 
-        while ($row = mysqli_fetch_assoc($theResponse)) {
+        while ($row = mysql_fetch_assoc($theResponse)) {
             echo "<option>".$row["city"]."</option>";
         }
         ?>
@@ -99,7 +99,6 @@
       <br><input type=submit value="Submit">
 
       <script>
-        document.write("lmao");
         var useType = document.getElementById('usrType');
 
         function showOrHide(){

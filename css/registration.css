@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    min-width: 1600px;
+    min-width: 1300px;
 }
 
 /* Sections of the page */
@@ -13,13 +13,6 @@ header {
     font-size: 60px;
     font-family: 'Carrois Gothic', sans-serif;
 }
-
-#leftSidebar {
-    float: left;
-    width: 25%;
-
-}
-
 #mainContent {
     box-sizing: border-box;
     float: left;
