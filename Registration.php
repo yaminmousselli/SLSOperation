@@ -2,23 +2,19 @@
 <html>
 
     <head>
-      <link rel="stlesheet" type="text/css" href="css/registration.css">
+      <link rel="stylesheet" type="text/css" href="css/registration.css">
       <script type="text/javascript" src="js/registration.js"></script>
     </head>
 
     <header>Operation SLS</header>
 
     <div id="container">
-        <div class="sidebar" id="leftSidebar">
-            <img src="img/working.jpg"></img>
-        </div>
-
         <div id="mainContent">
             <div>
                 <h2>Registration</h2>
             </div>
 
-            <form action="" method="post">
+            <form action="index.html" method="post"> <!-- index.html might change-->
                 <div class="registrationFormEntry">
                     <label>Username</label>
                     <input type="text" name="username" id="username" required>
@@ -115,7 +111,7 @@
             document.getElementById("offStateSelect").style.display = "block";
             document.getElementById("offCitySelect").style.display="block";
         }
-    }  
+    }
       </script>
   </form>
 </html>
