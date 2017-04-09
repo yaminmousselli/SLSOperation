@@ -49,3 +49,15 @@ label {
 p {
     font-family: sans-serif;
 }
+
+#btnSubmit {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btnCancel {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}

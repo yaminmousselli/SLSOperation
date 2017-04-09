@@ -1,3 +1,3 @@
 function goToLogin() {
-  window.location.assign("login.php");
+  window.location.assign("index.html");
 }
