@@ -2,6 +2,7 @@
 <html>
 
     <head>
+      <link rel="stylesheet" type="text/css" href="css/main.css">
       <link rel="stylesheet" type="text/css" href="css/registration.css">
       <script type="text/javascript" src="js/registration.js"></script>
     </head>
@@ -49,34 +50,45 @@
         }
       </script>
 
-      User Type:
-      <select name="userType" id="usrType" onchange="showOrHide()" required>
-        <option>City Scientist</option>
-        <option>City Official</option>
-      </select><br>
+      <div class="labelWidth">
+        <div class="labelWidth"
+            <label>User Type:</label>
+            <select name="userType" id="userType" onchange="showOrHide()" required>
+              <option>City Scientist</option>
+              <option>City Official</option>
+            </select><br>
+        </div>
 
-      State: <select name="officialState" id='offStateSelect'>
-        <?php
-        $conn = mysql_connect("localhost","compuser","yeahsure");
-        mysql_select_db("4400DatabaseProject",$conn);
-        echo mysql_error();
+        <div class="labelWidth"
+            <label>State:</label>
+            <select name="officialState" id='offStateSelect'>
+              <?php
+              $conn = mysql_connect("localhost","compuser","yeahsure");
+              mysql_select_db("4400DatabaseProject",$conn);
+              echo mysql_error();
 
-        if (!$conn) {
-            echo "Unable to connect to DB: " . mysql_error();
-            exit;
-        }
+              if (!$conn) {
+                  echo "Unable to connect to DB: " . mysql_error();
+                  exit;
+              }
 
-        $theQuery = "SELECT state FROM CityState";
-        $theResponse = mysql_query($theQuery);
+              $theQuery = "SELECT state FROM CityState";
+              $theResponse = mysql_query($theQuery);
 
-        while ($row = mysql_fetch_assoc($theResponse)) {
-            echo "<option>".$row["state"]."</option>";
-        }
-        ?>
+              while ($row = mysql_fetch_assoc($theResponse)) {
+                  echo "<option>".$row["state"]."</option>";
+              }
+              ?>
 
-      </select><br>
-      City: <select name="officialCity" id="offCitySelect">
-        <?php
+            </select><br>
+        </div>
+        <div class="labelWidth"
+            <label>City:</label>
+            <select name="officialCity" id="offCitySelect">
+        </div>
+      </div>
+      <?php
+
 
         $conn = mysql_connect("localhost","compuser","yeahsure");
         mysql_select_db("4400DatabaseProject",$conn);
@@ -93,12 +105,12 @@
         while ($row = mysql_fetch_assoc($theResponse)) {
             echo "<option>".$row["city"]."</option>";
         }
-        ?>
+      ?>
       </select>
 
       <br><input type=submit value="Submit" id="btnSubmit">
 
-      <button onclick=goToLogin() id="btnCancel"> Cancel </button> 
+      <button onclick=goToLogin() id="btnCancel"> Cancel </button>
 
       <script>
         var useType = document.getElementById('usrType');
@@ -108,7 +120,7 @@
             document.getElementById("offStateSelect").style.display = "none";
             document.getElementById("offCitySelect").style.display = "none";
         }
-        if(useType.value == "City Scientist"){
+        if(useType.value == "City Scientist") {
             document.getElementById("offStateSelect").style.display = "block";
             document.getElementById("offCitySelect").style.display="block";
         }
