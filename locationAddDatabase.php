@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<script type="text/javascript"></script>
+	<script>
+    function pointFailed(){
+        localStorage.setItem("didFail","Invalid input, please check your data location's parameters and try again.");
+        window.location.assign("AddLocation.php")
+}
+    function pointSuccess(theLocation){
+        localStorage.setItem("didFail", theLocation + "was added");
+        window.location.assign("AddLocation.php")
+}
+</script>
 
 
 <?php 
@@ -14,18 +23,18 @@
     }
     var_dump($_POST);
     echo "<br>";
-    $theValues = ""
+    $theValues = "'".$_POST["newLocation"]."','".$_POST["zipCode"]."','".$_POST["City"]."', '".$_POST["State"]."'";
 
     $theQuery = "INSERT INTO Poi (locationName,zipcode,city, state) VALUES(".$theValues.")";
     $theResponse = mysql_query($theQuery);
     echo mysql_error();
 
     if(!$theResponse){
-    	// echo 
+    	echo "<script>pointFailed();</script>"; 
     }
 
     if($theResponse){
-    	//echo
+    	echo <script>pointSuccess('".$_POST["newLocation"]."')</script>
     }
 
  ?>
