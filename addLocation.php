@@ -61,14 +61,20 @@
 
 
 		<h3>Zip code: </h3><br>
-		<input type = "text" name = "zipCode"><br>
-
-	</form>	
-	
-	<script>
+		<input type = "text" name = "zipCode">
+		<br>
+		<br>
+		<input type="submit" value="Submit">
+		<input type="reset">
+		<br>
+		<p id = 'errorMsg'></p>
+		<script>
         document.getElementById('errorMsg').innerHTML = localStorage.getItem("didFail");
         localStorage.setItem("didFail","");
-    </script>
+    	</script>	
+
+
+	</form>	
 
 
 	<form action="index.html">
