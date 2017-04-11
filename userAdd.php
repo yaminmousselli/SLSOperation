@@ -40,10 +40,24 @@ function success(){
             $fail = true;
         }
     }
+    
+    if($_POST['userType'] == 'City Scientist'){
+        $type = 'cityScientist';
+        
+    }
+    if($_POST['userType'] == 'City Official'){
+        $type = 'cityOfficial';
+    }
   
     if(!$fail){
-        $theQuery = "SELECT * FROM User WHERE username='".$_POST['username']."' OR email = '".$_POST['email']."'";
+        $theQuery = "INSERT INTO User(username, email, password, userType) VALUES ('".$_POST['username']."','".$_POST['email']."','".$_POST['password']."','".$type."')";
         $theResponse = mysql_query($theQuery);
+        echo mysql_error();
+        if($type =='cityOfficial'){
+            $theQuery = "INSERT INTO CityOfficial(username, isApproved, title, city, state) VALUES ('".$_POST['username']."','0','".$_POST['title']."','".$_POST['officialCity']."','".$_POST['officialState']."')";
+            $theResponse = mysql_query($theQuery);
+            echo mysql_error();
+        }
         
         if(!$theResponse){
             echo "catastrophic failure gg no re";

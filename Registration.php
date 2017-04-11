@@ -34,21 +34,12 @@
 
                 <div class="registrationFormEntry">
                     <label>Confirm Password</label>
-                    <input type="password" name="password" id="passConf" onchange="validatePass()"
+                    <input type="password" id="passConf" onchange="validatePass()"
                         name="passwordConfrim" required> <br>
                 </div>
 
       <script>
-        var pass = document.getElementById("pass");
-        var confPass = document.getElementById('passConf');
 
-        function validatePass() {
-          if (pass.value != confPass.value){
-              confPass.setCustomValidity("Passwords donut match");
-          } else {
-            confPass.setCustomValidity('');
-          }
-        }
       </script>
 
       <div class="labelWidth">
@@ -59,7 +50,12 @@
               <option>City Official</option>
             </select><br>
         </div>
-
+        
+        <div class="labelWidth"
+            <label> Title:</label>
+            <input type="text" name="title">
+        </div>
+        
         <div class="labelWidth"
             <label>State:</label>
             <select name="officialState" id='offStateSelect'>
@@ -113,20 +109,7 @@
 
   <button onclick=goToLogin() id="btnCancel"> Cancel </button>
 
-  <script>
-    var useType = document.getElementById('usrType');
 
-    function showOrHide(){
-    if (useType.value == "City Official") {
-        document.getElementById("offStateSelect").style.display = "none";
-        document.getElementById("offCitySelect").style.display = "none";
-    }
-    if(useType.value == "City Scientist") {
-        document.getElementById("offStateSelect").style.display = "block";
-        document.getElementById("offCitySelect").style.display="block";
-    }
-}
-  </script>
   
   <script>
     document.getElementById('errorMsg').innerHTML = localStorage.getItem("didItFail");
