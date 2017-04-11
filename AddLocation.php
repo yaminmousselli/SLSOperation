@@ -7,14 +7,15 @@
 	</div>
 
 	<?php  
-//dowjfkwkfw
+
 
 	?>
 
-	<form>
-		<h3>POI location name: </h3><br>
+	<form action="locationAdd">
+		<h3>POI location name: </h3>
 		<input type = "text" name = "newLocation"><br>
 
+		<h3>City:</h3>
 		<select name="City" required>
 		<?php 
 			$conn = mysql_connect("localhost","compuser","yeahsure");
@@ -26,7 +27,7 @@
 				exit;
 			}
 
-			$theQuery = "select city FROM 'CityState'";
+			$theQuery = "SELECT city FROM CityState";
 			$theResponse = mysql_query($theQuery);
 
 			while($row  = mysql_fetch_assoc($theResponse)) {
@@ -39,6 +40,7 @@
 		<br>
 		<br>
 
+		<h3>State:</h3>
 		<select name = "State" required> 
 		<?php 
 			$conn = mysql_connect("localhost","compuser","yeahsure");
@@ -50,7 +52,7 @@
 				exit;
 			}
 
-			$theQuery = "select state FROM 'CityState'";
+			$theQuery = "SELECT DISTINCT state FROM CityState";
 			$theResponse = mysql_query($theQuery);
 
 			while($row  = mysql_fetch_assoc($theResponse)) {
