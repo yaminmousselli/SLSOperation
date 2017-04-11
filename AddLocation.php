@@ -7,7 +7,7 @@
 	</div>
 
 	<?php  
-
+//dowjfkwkfw
 
 	?>
 
@@ -78,7 +78,7 @@
 
 
 	<form action="index.html">
-		<input type="submit" name="Log out">
+		<input type="submit" value="Log out">
 	</form>
 
 </html>
