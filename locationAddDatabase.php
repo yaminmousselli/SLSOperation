@@ -34,7 +34,7 @@
     }
 
     if($theResponse){
-    	echo <script>pointSuccess('".$_POST["newLocation"]."')</script>
+    	echo "<script>pointSuccess('".$_POST["newLocation"]."')</script>";
     }
 
  ?>
