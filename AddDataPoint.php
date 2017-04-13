@@ -1,3 +1,4 @@
+<?php include "dbConn.php"; ?>
 <html>
 
     <head><link rel="stylesheet" type="text/css" href="main.css"></head>
@@ -19,17 +20,7 @@
 
         <select name="newDataLocation" required>
         <?php
-        
-        $conn = mysql_connect("localhost","compuser","yeahsure");
-        mysql_select_db("4400DatabaseProject",$conn);
-        echo mysql_error();
 
-        if (!$conn) {
-            echo "Unable to connect to DB: " . mysql_error();
-            exit;
-        }
-
-        
         $theQuery = "SELECT locationName FROM `Poi`";
         $theResponse = mysql_query($theQuery);
 
@@ -51,17 +42,7 @@
         <h3> Data Type </h3>
         <select name="newDataType" required>
         <?php
-        
-        $conn = mysql_connect("localhost","compuser","yeahsure");
-        mysql_select_db("4400DatabaseProject",$conn);
-        echo mysql_error();
 
-        if (!$conn) {
-            echo "Unable to connect to DB: " . mysql_error();
-            exit;
-        }
-
-        
         $theQuery = "SELECT readingType FROM `DataType`";
         $theResponse = mysql_query($theQuery);
 

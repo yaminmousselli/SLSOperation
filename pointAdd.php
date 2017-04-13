@@ -16,15 +16,7 @@ function pointSuccess(theLocation){
 </form>
 -->
 <?php
-
-    $conn = mysql_connect("localhost","compuser","yeahsure");
-    mysql_select_db("4400DatabaseProject",$conn);
-    echo mysql_error();
-
-    if (!$conn) {
-        echo "Unable to connect to DB: " . mysql_error();
-        exit;
-    }
+    include "dbConn.php";
     var_dump($_POST);
     echo "<br>";
     $theValues = "'0','".$_POST["newDataValue"]."','".$_POST["newDataLocation"]."','".$_POST["newDataTime"]."','".$_POST["newDataType"]."'";

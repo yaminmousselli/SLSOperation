@@ -6,21 +6,14 @@
         window.location.assign("AddLocation.php")
 }
     function pointSuccess(theLocation){
-        localStorage.setItem("didFail", theLocation + "was added");
+        localStorage.setItem("didFail", theLocation + " was added");
         window.location.assign("AddLocation.php")
 }
 </script>
 
 
 <?php 
-	$conn = mysql_connect("localhost","compuser","yeahsure");
-    mysql_select_db("4400DatabaseProject",$conn);
-    echo mysql_error();
-    
-    if (!$conn) {
-        echo "Unable to connect to DB: " . mysql_error();
-        exit;
-    }
+    include "dbConn.php";
     var_dump($_POST);
     echo "<br>";
     $theValues = "'".$_POST["newLocation"]."','".$_POST["zipCode"]."','".$_POST["City"]."', '".$_POST["State"]."'";

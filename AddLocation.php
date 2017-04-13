@@ -1,3 +1,5 @@
+<?php include "dbConn.php" ?>
+
 <html>
 
     <head><link rel="stylesheet" type="text/css" href="main.css"></head>
@@ -17,15 +19,6 @@
         <h3>City:</h3>
         <select name="City" required>
         <?php 
-            $conn = mysql_connect("localhost","compuser","yeahsure");
-            mysql_select_db("4400DatabaseProject",$conn);
-            echo mysql_error();
-
-            if (!$conn) {
-                echo "Unable to connect to DB: " .mysql_error();
-                exit;
-            }
-
             $theQuery = "SELECT city FROM CityState";
             $theResponse = mysql_query($theQuery);
 
@@ -42,14 +35,6 @@
         <h3>State:</h3>
         <select name = "State" required>
         <?php 
-            $conn = mysql_connect("localhost","compuser","yeahsure");
-            mysql_select_db("4400DatabaseProject",$conn); 
-            echo mysql_error();
-
-            if (!$conn) {
-                echo "Unable to connect to DB: " .mysql_error();
-                exit;
-            }
             $theQuery = "SELECT DISTINCT state FROM CityState"; 
             
             $theResponse = mysql_query($theQuery);
