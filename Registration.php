@@ -1,6 +1,6 @@
 <!DOCTYPE html>
+<?php include "dbConn.php"; ?>
 <html>
-    <?php include "dbConn.php"; ?>
     <head>
       <link rel="stylesheet" type="text/css" href="css/main.css">
       <link rel="stylesheet" type="text/css" href="css/registration.css">
