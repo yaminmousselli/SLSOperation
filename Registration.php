@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+    <?php include "dbConn.php"; ?>
     <head>
       <link rel="stylesheet" type="text/css" href="css/main.css">
       <link rel="stylesheet" type="text/css" href="css/registration.css">
@@ -60,14 +60,6 @@
             <label>State:</label>
             <select name="officialState" id='offStateSelect'>
               <?php
-              $conn = mysql_connect("localhost","compuser","yeahsure");
-              mysql_select_db("4400DatabaseProject",$conn);
-              echo mysql_error();
-
-              if (!$conn) {
-                  echo "Unable to connect to DB: " . mysql_error();
-                  exit;
-              }
 
               $theQuery = "SELECT DISTINCT state FROM CityState";
               $theResponse = mysql_query($theQuery);
@@ -85,16 +77,6 @@
         </div>
   </div>
   <?php
-
-
-    $conn = mysql_connect("localhost","compuser","yeahsure");
-    mysql_select_db("4400DatabaseProject",$conn);
-    echo mysql_error();
-
-    if (!$conn) {
-        echo "Unable to connect to DB: " . mysql_error();
-        exit;
-    }
 
     $theQuery = "SELECT city FROM CityState";
     $theResponse = mysql_query($theQuery);
