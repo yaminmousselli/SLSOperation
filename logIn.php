@@ -20,14 +20,7 @@ function goCityOfficial() {
 
 //echo "trying<br>";
 
-$conn = mysql_connect("localhost","compuser","yeahsure");
-mysql_select_db("4400DatabaseProject",$conn);
-
-
-if (!$conn) {
-    echo "Unable to connect to DB: " . mysql_error();
-    exit;
-}
+include "dbConn.php";
 
 //$theQuery = "SELECT * FROM User WHERE username ='".$_POST['username']."' AND password = '".$POST_['password']."'";
 
