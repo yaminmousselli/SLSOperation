@@ -25,7 +25,7 @@
     }
     
     if(!$flagged){
-        $theQuery = "UPDATE Poi SET  flagged =  1 WHERE  locationName = '".$_POST['locationName']."'";
+        $theQuery = "UPDATE Poi SET  flagged =  1,dateFlagged = '".date(DATE_ATOM,1)."' WHERE  locationName = '".$_POST['locationName']."'";
         $theResponse = mysql_query($theQuery);
         if(!$theResponse){
             mysql_error();
@@ -34,7 +34,7 @@
     }
     
     if($flagged){
-        $theQuery = "UPDATE Poi SET  flagged =  0 WHERE  locationName = '".$_POST['locationName']."'";
+        $theQuery = "UPDATE Poi SET  flagged =  0,dateFlagged = NULL WHERE  locationName = '".$_POST['locationName']."'";
         $theResponse = mysql_query($theQuery);
         if(!$theResponse){
             mysql_error();
