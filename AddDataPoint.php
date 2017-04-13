@@ -12,7 +12,7 @@
     ?>
     
     
-    <a href="addLocation">add a new location</a>
+    <a href="AddLocation.php">add a new location</a>
     <br>
     <br>
     <form action="pointAdd.php" method="post">
