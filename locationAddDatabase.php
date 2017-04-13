@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include "dbConn.php"; ?>
 <html>
 	<script>
     function pointFailed(){
@@ -12,8 +11,8 @@
 }
 </script>
 
-
-<?php 
+<?php
+    include "dbConn.php"; 
     var_dump($_POST);
     echo "<br>";
     $theValues = "'".$_POST["newLocation"]."','".$_POST["zipCode"]."','".$_POST["City"]."', '".$_POST["State"]."'";

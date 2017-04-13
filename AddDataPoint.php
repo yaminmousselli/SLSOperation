@@ -1,4 +1,3 @@
-<?php include "dbConn.php"; ?>
 <html>
 
     <head><link rel="stylesheet" type="text/css" href="main.css"></head>
@@ -7,10 +6,7 @@
         <center><h1>Add Data Point</h1></center>
     </div>
     
-    <?php
-
-    ?>
-    
+    <?php include "dbConn.php"; ?>
     
     <a href="AddLocation.php">add a new location</a>
     <br>

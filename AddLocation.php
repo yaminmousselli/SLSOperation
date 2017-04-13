@@ -1,5 +1,3 @@
-<?php include "dbConn.php"; ?>
-
 <html>
 
     <head><link rel="stylesheet" type="text/css" href="main.css"></head>
@@ -8,10 +6,8 @@
         <center><h1>Add a new Location</h1></center>
     </div>
 
-    <?php  
-//we gucci
+    <?php include "dbConn.php"; ?>
 
-    ?>
     <form action="locationAddDatabase.php" method = "post">
         <h3>POI location name: </h3>
         <input type = "text" name = "newLocation"><br>

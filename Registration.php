@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<?php include "dbConn.php"; ?>
 <html>
     <head>
       <link rel="stylesheet" type="text/css" href="css/main.css">
       <link rel="stylesheet" type="text/css" href="css/registration.css">
       <script type="text/javascript" src="js/registration.js"></script>
     </head>
+    <?php include "dbConn.php"; ?> 
 
     <header>Operation SLS</header>
 
