@@ -73,7 +73,7 @@
 
                 <div class="viewEntry" id="dateFlaggedEntry">
                     <label for="date">Date Flagged</label>
-                    <input type="date" id="dateFlaggedStart" name="dateFlaggedStart"> <p>to</p> <input type="date" id="dateFlaggedEnd" name="dateFlaggedEnd"> 
+                    <input type="datetime-local" id="dateFlaggedStart" name="dateFlaggedStart"> <p>to</p> <input type="datetime-local" id="dateFlaggedEnd" name="dateFlaggedEnd"> 
                 </div>
 
                 <div id="filterControls">
@@ -117,18 +117,23 @@
             if (count($_POST) != 0){
                 
                 
+                /**echo $_POST['isFlagged'];
+                echo gettype($_POST['isFlagged']);
+                if($_POST['isFlagged'] == 'isFlagged'){
+                    echo "FRICKIN GOSH DARM!!!";
+                }**/
                 
-                if($_POST['isFlagged'] == 1){
+                if($_POST['isFlagged'] == 'isFlagged'){
                     $theQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi 
-                    WHERE locationName = '".$_POST['poiNameSelect']."' AND
+                     WHERE locationName = '".$_POST['poiNameSelect']."' AND
                     city = '".$_POST['citySelect']."' AND
                     state = '".$_POST['stateSelect']."' AND
                     zipcode = '".$_POST['zipCode']."' AND
-                    flagged = '".$_POST['isFlagged']."' AND
+                    flagged = '1' AND
                     dateFlagged BETWEEN '".$_POST['dateFlaggedStart']."' AND '".$_POST['dateFlaggedEnd']."'";
                 }
                 
-                if($_POST['isFlagged'] == 0){
+                if($_POST['isFlagged'] != 'isFlagged'){
                     $theQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi 
                     WHERE locationName = '".$_POST['poiNameSelect']."' AND
                     city = '".$_POST['citySelect']."' AND
