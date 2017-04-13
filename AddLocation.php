@@ -10,7 +10,6 @@
 //we gucci
 
     ?>
-
     <form action="locationAddDatabase.php" method = "post">
         <h3>POI location name: </h3>
         <input type = "text" name = "newLocation"><br>
@@ -41,7 +40,7 @@
         <br>
 
         <h3>State:</h3>
-        <select name = "State" required> 
+        <select name = "State" required>
         <?php 
             $conn = mysql_connect("localhost","compuser","yeahsure");
             mysql_select_db("4400DatabaseProject",$conn);
