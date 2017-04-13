@@ -43,15 +43,15 @@
         <select name = "State" required>
         <?php 
             $conn = mysql_connect("localhost","compuser","yeahsure");
-            mysql_select_db("4400DatabaseProject",$conn);
+            mysql_select_db("4400DatabaseProject",$conn); 
             echo mysql_error();
 
             if (!$conn) {
                 echo "Unable to connect to DB: " .mysql_error();
                 exit;
             }
-
-            $theQuery = "SELECT DISTINCT state FROM CityState";
+            $theQuery = "SELECT DISTINCT state FROM CityState"; 
+            
             $theResponse = mysql_query($theQuery);
 
             while($row  = mysql_fetch_assoc($theResponse)) {

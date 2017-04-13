@@ -69,7 +69,7 @@
                   exit;
               }
 
-              $theQuery = "SELECT state FROM CityState";
+              $theQuery = "SELECT DISTINCT state FROM CityState";
               $theResponse = mysql_query($theQuery);
 
               while ($row = mysql_fetch_assoc($theResponse)) {
