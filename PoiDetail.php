@@ -3,19 +3,28 @@
     include "dbConn.php";
     ?>
     <h3 id="locationMessage"></h3>
+    <h4 id="flagMessage"></h4>
+    
     
     <script src="js/sorttable.js"></script>
     
     <h1>Poi Detail</h1>
     
     <script>
-    function pointFlag(theFlag){
+    function pointFlag(){
         localStorage.setItem("pointToFlag",localStorage.getItem("ourPoi")); //Why are these different, you ask? Why not just keep using "ourPoi"? Because they can be, ya dummy
-        window.location.assign("flagPoint.php");
+        //document.write("come ON!");
+        document.getElementById('locName').value = localStorage.getItem("pointToFlag");
+        document.getElementById("secForm").submit();
     }
-    
+
     </script>
-    <button onclick="pointFlag(localStorage.getItem('ourPoi')">Flag this point!</button>
+    
+    <form action = "flagPoint.php" id='secForm' method="post" hidden>
+        <input type='text' id='locName' name='locationName'>
+    </form>
+    
+    <button onclick="pointFlag()">Toggle Flag</button>
     
     <form action="" method = "post">
         Type: <select name="dataType" required>
@@ -46,6 +55,8 @@
     
     <script>
         document.getElementById('locationMessage').innerHTML = "POI Location: "+localStorage.getItem("ourPoi");
+        document.getElementById('flagMessage').innerHTML = localStorage.getItem("wasItFlagged");
+        localStorage.setItem("wasItFlagged","")
         document.getElementById('secretLoc').value = localStorage.getItem("ourPoi");
     </script>
     
