@@ -1,3 +1,4 @@
+<?php include "dbConn.php"; ?>
 <html>
 
 <script>
@@ -16,7 +17,6 @@ function pointSuccess(theLocation){
 </form>
 -->
 <?php
-    include "dbConn.php";
     var_dump($_POST);
     echo "<br>";
     $theValues = "'0','".$_POST["newDataValue"]."','".$_POST["newDataLocation"]."','".$_POST["newDataTime"]."','".$_POST["newDataType"]."'";
