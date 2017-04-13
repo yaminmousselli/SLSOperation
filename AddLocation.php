@@ -1,4 +1,4 @@
-<?php include "dbConn.php" ?>
+<?php include "dbConn.php"; ?>
 
 <html>
 
