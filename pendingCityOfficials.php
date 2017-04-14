@@ -37,7 +37,7 @@
 <br>
 <form action = "RejectCityOfficial.php"> <!--should delete selected CityOfficials -->
     <input type = "submit" value = "Reject">
-<form>
+</form>
 <br>
 <form action = "AcceptCityOfficial.php"> <!--should alter isApproved value for
 CityOfficials -->
