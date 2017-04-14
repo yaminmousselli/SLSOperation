@@ -25,7 +25,7 @@
         echo '<td>'.$row["city"].'</td>'; 
         echo '<td>'.$row["state"].'</td>'; 
         echo '<td>'.$row["title"].'</td>';   
-        echo '<td><input type="checkbox" name="'.ch1.'"value="unchecked"></td>';
+        echo '<td><input type="checkbox" name="ch1"value="unchecked"></td>';
         echo '</tr>';
     }   
 
