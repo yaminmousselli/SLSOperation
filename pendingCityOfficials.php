@@ -33,6 +33,7 @@
         
 ?>
 
+
 </table>
 
     <input type = "submit" name = "action" value = "Accept">
@@ -46,7 +47,7 @@
         </script>   
 
 </form>
-<form action = "ChooseFunctionalityOfficial.html">
+<form action = "ChooseFunctionalityAdmin.html">
     <input type="submit" value="Back">
 </form>
 

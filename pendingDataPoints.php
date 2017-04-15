@@ -1,6 +1,6 @@
 <html>
 
-<h1>Pending City Official Accounts</h1>
+<h1>Pending Data Points</h1>
 <script src="js/sorttable.js"></script>
 <table class="sortable">
     <tr>
@@ -44,7 +44,7 @@
         </script>   
 
 </form>
-<form action = "ChooseFunctionalityOfficial.html">
+<form action = "ChooseFunctionalityAdmin.html">
     <input type="submit" value="Back">
 </form>
 
