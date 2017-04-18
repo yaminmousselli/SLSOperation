@@ -23,7 +23,7 @@
         echo '<td>'.$row["type"].'</td>'; 
         echo '<td>'.$row["dataValue"].'</td>'; 
         echo '<td>'.$row["recordTime"].'</td>'; 
-        echo '<td><input type="checkbox" name="ch[]" value = "'.$row["locationName"].' "></td>';
+        echo '<td><input type="checkbox" name="ch[]" value = "'.$row["locationName"].'|'.$row["recordTime"].'"></td>';
     
         echo '</tr>';
     }  
