@@ -19,9 +19,9 @@ function pointSuccess(theLocation){
     include "dbConn.php";
     var_dump($_POST);
     echo "<br>";
-    $theValues = "'0','".$_POST["newDataValue"]."','".$_POST["newDataLocation"]."','".$_POST["newDataTime"]."','".$_POST["newDataType"]."'";
+    $theValues = "'".$_POST["newDataValue"]."','".$_POST["newDataLocation"]."','".$_POST["newDataTime"]."','".$_POST["newDataType"]."'";
     echo $theValues;
-    $theQuery = "INSERT INTO DataPoint (isApproved,dataValue,locationName,recordTime,type) VALUES (".$theValues.")";
+    $theQuery = "INSERT INTO DataPoint (dataValue,locationName,recordTime,type) VALUES (".$theValues.")";
     $theResponse = mysql_query($theQuery);
     echo mysql_error();
     if(!$theResponse){

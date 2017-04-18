@@ -22,9 +22,7 @@
     if ($_POST['action'] == 'Accept') {
         foreach ($selected as $value) {
             
-            $theQuery = "UPDATE DataPoint 
-            SET isApproved = 1 
-            WHERE locationName = '$value'";     
+            $theQuery = "UPDATE DataPoint SET isApproved = 1 WHERE locationName = '$value'";     
             $theResponse = mysql_query($theQuery);
             echo mysql_error(); 
         }
@@ -36,7 +34,7 @@
     if ($_POST['action'] == 'Reject') {
         foreach ($selected as $value) {
             
-            $theQuery = "DELETE FROM DataPoint WHERE locationName = '$value'";     
+            $theQuery = "UPDATE DataPoint SET isApproved = 0 WHERE locationName = '$value'";     
             $theResponse = mysql_query($theQuery);
             echo mysql_error();
         }

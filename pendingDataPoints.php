@@ -13,7 +13,7 @@
 <form action = "dataPointApproval.php" method = "post"> 
 <?php
     include "dbConn.php";
-    $theQuery = "SELECT * FROM DataPoint WHERE isApproved = 0";
+    $theQuery = "SELECT * FROM DataPoint WHERE isApproved IS NULL";
     $theResponse = mysql_query($theQuery);
    
  
