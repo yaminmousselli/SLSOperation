@@ -2,7 +2,7 @@
 
 <h1>Pending City Official Accounts</h1>
 <script src="js/sorttable.js"></script>
-<table class="sortable">
+<table class="sortable" border = "1">
     <tr>
         <th>Username</th>
         <th>Email</th>

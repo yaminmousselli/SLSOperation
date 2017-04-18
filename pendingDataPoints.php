@@ -2,7 +2,7 @@
 
 <h1>Pending Data Points</h1>
 <script src="js/sorttable.js"></script>
-<table class="sortable">
+<table class="sortable" border = "1">
     <tr>
         <th>POI location</th>
         <th>Data type</th>
@@ -11,6 +11,7 @@
         <th>Select</th>
     </tr>
 <form action = "dataPointApproval.php" method = "post"> 
+
 <?php
     include "dbConn.php";
     $theQuery = "SELECT * FROM DataPoint WHERE isApproved IS NULL";
