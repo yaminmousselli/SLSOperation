@@ -41,7 +41,7 @@ while($row = mysql_fetch_assoc($checkEmpty)) {
 
 
     //echo "tried while<br>";
-    if($row["username"] == $_POST["username"]) {
+    if($row["username"] == strtolower($_POST["username"])) {
         if($row["password"] == $_POST["password"]){
             $login = true;
 
