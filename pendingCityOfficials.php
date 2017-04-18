@@ -14,7 +14,7 @@
 <form action = "AcceptCityOfficial.php" method = "post"> 
 <?php
     include "dbConn.php";
-    $theQuery = "SELECT User.username,email,city,state,title FROM User,CityOfficial WHERE User.username = CityOfficial.username && isApproved = 0 GROUP BY username";
+    $theQuery = "SELECT User.username,email,city,state,title FROM User,CityOfficial WHERE User.username = CityOfficial.username && isApproved IS NULL GROUP BY username";
     $theResponse = mysql_query($theQuery);
    
  

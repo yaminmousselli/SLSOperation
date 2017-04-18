@@ -47,7 +47,7 @@ function success(){
         $theResponse = mysql_query($theQuery);
         echo mysql_error();
         if($type =='cityOfficial'){
-            $theQuery = "INSERT INTO CityOfficial(username, isApproved, title, city, state) VALUES ('".$_POST['username']."','0','".$_POST['title']."','".$_POST['officialCity']."','".$_POST['officialState']."')";
+            $theQuery = "INSERT INTO CityOfficial(username, title, city, state) VALUES ('".$_POST['username']."','".$_POST['title']."','".$_POST['officialCity']."','".$_POST['officialState']."')";
             $theResponse = mysql_query($theQuery);
             echo mysql_error();
         }

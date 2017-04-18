@@ -22,9 +22,7 @@
     if ($_POST['action'] == 'Accept') {
         foreach ($selected as $value) {
             
-            $theQuery = "UPDATE CityOfficial 
-            SET isApproved = 1 
-            WHERE username = '$value'";     
+            $theQuery = "UPDATE CityOfficial SET isApproved = 1 WHERE username = '$value'";     
             $theResponse = mysql_query($theQuery);
             echo mysql_error(); 
         }
@@ -36,7 +34,7 @@
     if ($_POST['action'] == 'Reject') {
         foreach ($selected as $value) {
             
-            $theQuery = "DELETE FROM User WHERE username = '$value'";     
+            $theQuery = "UPDATE CityOfficial SET isApproved = 0 WHERE username = '$value'";     
             $theResponse = mysql_query($theQuery);
             echo mysql_error();
         }
