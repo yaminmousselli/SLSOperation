@@ -3,7 +3,7 @@ function goToFilterPoi() {
 }
 
 function goToPoiReport() {
-    window.location.assign("POIReport.php")
+    window.location.assign("PoiReport.php")
 }
 
 function goToLogin() {
