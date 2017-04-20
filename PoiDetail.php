@@ -27,7 +27,8 @@
     <button onclick="pointFlag()">Toggle Flag</button>
     
     <form action="" method = "post">
-        Type: <select name="dataType" required>
+        Type: <select name="dataType">
+        <option>Any</option>
         <?php
 
         $theQuery = "SELECT readingType FROM `DataType`";
@@ -39,12 +40,12 @@
         ?>        
         </select>
         
-        Data Value: <input type="number" name="minValue" min="-99999" max="99999" required> to <input type="number" name="maxValue" min="-99999" max="99999" required>
+        Data Value: <input type="number" name="minValue" min="-99999" max="99999"> to <input type="number" name="maxValue" min="-99999" max="99999">
         
         Time and Date:
-        <input type="datetime-local" name="minDatetime" required>
+        <input type="datetime-local" name="minDatetime">
         to
-        <input type="datetime-local" name="maxDatetime" required>
+        <input type="datetime-local" name="maxDatetime">
         
         <input type="text" id="secretLoc" name="locationName" hidden> 
         
@@ -70,13 +71,38 @@
 
     <?php
     if (count($_POST) != 1){
-        
+        /*
         $theQuery = "SELECT * FROM DataPoint 
         WHERE isApproved = 1 
         AND dataValue BETWEEN ".$_POST['minValue']." AND ".$_POST['maxValue']."
         AND locationName = '".$_POST['locationName']."'
         AND recordTime BETWEEN '".$_POST['minDatetime']."' AND '".$_POST['maxDatetime']."'
         AND type = '".$_POST['dataType']."'";
+        */
+        
+        $theQuery = "SELECT * FROM DataPoint 
+        WHERE isApproved = 1 AND ";
+        
+        if($_POST['minValue'] != ''){
+            $theQuery = $theQuery."dataValue >= ".$_POST['minValue']." AND "; 
+        }
+        if($_POST['maxValue'] != ''){
+            $theQuery = $theQuery."dataValue <= ".$_POST['maxValue']." AND ";
+        }
+        if($_POST['locationName'] != ''){
+            $theQuery = $theQuery."locationName = '".$_POST['locationName']."' AND ";
+        }
+        if($_POST['minDatetime'] != ''){
+            $theQuery = $theQuery."recordTime >= '".$_POST['minDatetime']."' AND ";
+        }
+        if($_POST['maxDatetime'] != ''){
+            $theQuery = $theQuery."recordTime <= '".$_POST['maxDatetime']."' AND ";
+        }
+        if($_POST['dataType'] != 'Any'){
+            $theQuery = $theQuery."type = '".$_POST['dataType']."' AND ";
+        }
+        
+        $theQuery = $theQuery."1";
         
         //echo $theQuery;
         $theResponse = mysql_query($theQuery);
