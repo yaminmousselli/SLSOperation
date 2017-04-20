@@ -22,6 +22,7 @@
                 <div class="viewEntry">
                     <label for="poiNameSelect">POI Location Name</label>
                     <select id="poiNameSelect" name="poiNameSelect">
+                    <option>Any</option>
                     <?php
                     $theQuery = "SELECT locationName FROM `Poi`";
                     $theResponse = mysql_query($theQuery);
@@ -35,6 +36,7 @@
                 <div class="viewEntry">
                     <label for="citySelect">City</label>
                     <select id="citySelect" name="citySelect">
+                    <option>Any</option>
                     <?php
                     $theQuery = "SELECT city FROM CityState";
                     $theResponse = mysql_query($theQuery);
@@ -47,6 +49,7 @@
                 <div class="viewEntry">
                     <label for="stateSelect">State</label>
                     <select id="stateSelect" name="stateSelect">
+                    <option>Any</option>
                     <?php
                         $theQuery = "SELECT DISTINCT state FROM CityState";
                         $theResponse = mysql_query($theQuery);
@@ -139,15 +142,15 @@
                 
                 $theQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi 
                     WHERE ";
-                if($_POST['poiNameSelect'] != ''){
+                if($_POST['poiNameSelect'] != 'Any'){
                     $theQuery = $theQuery."locationName = '".$_POST['poiNameSelect']."' AND ";
                 }
                 
-                if($_POST['citySelect'] != ''){
+                if($_POST['citySelect'] != 'Any'){
                     $theQuery = $theQuery."city = '".$_POST['citySelect']."' AND ";
                 }
                 
-                if($_POST['stateSelect'] != ''){
+                if($_POST['stateSelect'] != 'Any'){
                     $theQuery = $theQuery."state = '".$_POST['stateSelect']."' AND ";
                 }
                 
