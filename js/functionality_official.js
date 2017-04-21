@@ -1,5 +1,5 @@
 function goToFilterPoi() {
-    window.location.assign("SearchPOI.php")
+    window.location.assign("SearchPOIDynamic.php")
 }
 
 function goToPoiReport() {

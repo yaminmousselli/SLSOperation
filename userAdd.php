@@ -43,7 +43,7 @@ function success(){
     }
   
     if(!$fail){
-        $theQuery = "INSERT INTO User(username, email, password, userType) VALUES ('".$_POST['username']."','".$_POST['email']."','".$_POST['password']."','".$type."')";
+        $theQuery = "INSERT INTO User(username, email, password, userType) VALUES (LCASE('".$_POST['username']."'),'".$_POST['email']."','".$_POST['password']."','".$type."')";
         $theResponse = mysql_query($theQuery);
         echo mysql_error();
         if($type =='cityOfficial'){
