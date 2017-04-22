@@ -1,0 +1,127 @@
+INSERT INTO `user`
+(`username`, `email`, `password`, `userType`) 
+VALUES
+('off0', 'off0@test.com', 'test', 'cityOfficial'),
+('off1', 'off1@test.com', 'test', 'cityOfficial'),
+('off2', 'off2@test.com', 'test', 'cityOfficial'),
+('off3', 'off3@test.com', 'test', 'cityOfficial'),
+('off4', 'off4@test.com', 'test', 'cityOfficial'),
+('off5', 'off5@test.com', 'test', 'cityOfficial'),
+('off6', 'off6@test.com', 'test', 'cityOfficial'),
+('off7', 'off7@test.com', 'test', 'cityOfficial'),
+('off8', 'off8@test.com', 'test', 'cityOfficial'),
+('off9', 'off9@test.com', 'test', 'cityOfficial'),
+('sci0', 'sci0@test.com', 'test', 'cityScientist'),
+('sci1', 'sci1@test.com', 'test', 'cityScientist'),
+('sci2', 'sci2@test.com', 'test', 'cityScientist'),
+('sci3', 'sci3@test.com', 'test', 'cityScientist'),
+('sci4', 'sci4@test.com', 'test', 'cityScientist'),
+('sci5', 'sci5@test.com', 'test', 'cityScientist'),
+('sci6', 'sci6@test.com', 'test', 'cityScientist'),
+('sci7', 'sci7@test.com', 'test', 'cityScientist'),
+('sci8', 'sci8@test.com', 'test', 'cityScientist'),
+('sci9', 'sci9@test.com', 'test', 'cityScientist'),
+('adm0', 'adm0@test.com', 'test', 'admin'),
+('adm1', 'adm1@test.com', 'test', 'admin'),
+('adm2', 'adm2@test.com', 'test', 'admin'),
+('adm3', 'adm3@test.com', 'test', 'admin'),
+('admin', 'admin@test.com', 'admin', 'admin');
+
+INSERT INTO `citystate`
+(`city`, `state`)
+VALUES
+('New York', 'New York'),
+('Los Angeles', 'California'),
+('Chicago', 'Illinois'),
+('Houston', 'Texas'),
+('Philadelphia', 'Pennsylvania'),
+('Phoenix', 'Arizona'),
+('San Antonio', 'Texas'),
+('San Diego', 'California'),
+('Dallas', 'Texas'),
+('San Jose', 'California'),
+('Austin', 'Texas'),
+('Jacksonville', 'Florida'),
+('San Francisco', 'California'),
+('Indianapolis', 'Indiana'),
+('Columbus', 'Ohio'),
+('Fort Worth', 'Texas'),
+('Charlotte', 'North Carolina'),
+('Seattle', 'Washington'),
+('Denver', 'Colorado'),
+('El Paso', 'Texas'),
+('Altanta', 'Georgia');
+
+INSERT INTO `cityofficial`
+(`username`, `isApproved`, `title`, `city`, `state`)
+VALUES
+('off0', '1', 'title0', 'New York', 'New York'),
+('off1', '1', 'title1', 'Los Angeles', 'California'),
+('off2', '1', 'title2', 'Chicago', 'Illinois'),
+('off3', '1', 'title3', 'Houston', 'Texas'),
+('off4', '0', 'title4', 'Philadelphia', 'Pennsylvania'),
+('off5', '0', 'title5', 'Phoenix', 'Arizona'),
+('off6', '0', 'title6', 'San Antonio', 'Texas'),
+('off7', NULL, 'title7', 'San Diego', 'California'),
+('off8', NULL, 'title8', 'Dallas', 'Texas'),
+('off9', NULL, 'title9', 'San Jose', 'California');
+
+INSERT INTO `datatype` (`readingType`) VALUES ('Mold'), ('Air Quality');
+
+INSERT INTO `poi`
+(`locationName`, `zipcode`, `flagged`, `dateFlagged`, `city`, `state`)
+VALUES
+('Georgia Tech', '30332', '1', '2017-02-23 00:00:00', 'Altanta', 'Georgia'),
+('GSU', '30333', '0', NULL, 'Altanta', 'Georgia'),
+('Emory', '30322', '0', NULL, 'Altanta', 'Georgia'),
+('UChicago', '60637', '1', '2017-02-24 00:00:00', 'Chicago', 'Illinois'),
+('Poi0', '77001', '0', NULL, 'Houston', 'Texas'),
+('Poi1', '77001', '0', NULL, 'Houston', 'Texas'),
+('Poi2', '77001', '0', NULL, 'Houston', 'Texas'),
+('Poi3', '77001', '0', NULL, 'Houston', 'Texas'),
+('Poi4', '77001', '0', NULL, 'Houston', 'Texas'),
+('Poi5', '77001', '0', NULL, 'Houston', 'Texas');
+
+INSERT INTO `datapoint`
+(`isApproved`, `dataValue`, `locationName`, `recordTime`, `type`)
+VALUES
+('1', '12', 'Georgia Tech', '2017-01-31 15:32:00', 'Mold'),
+('1', '42', 'Georgia Tech', '2017-02-15 16:12:00', 'Mold'),
+('1', '4', 'Georgia Tech', '2017-02-24 04:29:00', 'Air Quality'),
+('1', '34', 'Georgia Tech', '2017-02-01 03:57:00', 'Air Quality'),
+('1', '15', 'Georgia Tech', '2017-03-31 15:32:00', 'Mold'),
+('1', '46', 'Georgia Tech', '2017-04-15 16:12:00', 'Mold'),
+('1', '8', 'Georgia Tech', '2017-05-24 04:29:00', 'Air Quality'),
+('1', '37', 'Georgia Tech', '2017-06-01 03:57:00', 'Air Quality'),
+('1', '19', 'Georgia Tech', '2017-07-31 15:32:00', 'Mold'),
+('1', '49', 'Georgia Tech', '2017-08-15 16:12:00', 'Mold'),
+('1', '10', 'GSU', '2017-01-20 00:30:00', 'Mold'),
+('1', '11', 'GSU', '2017-02-21 01:30:00', 'Mold'),
+('1', '12', 'GSU', '2017-03-22 02:30:00', 'Air Quality'),
+('1', '10', 'Emory', '2017-04-23 03:30:00', 'Air Quality'),
+('1', '11', 'Emory', '2017-05-24 04:30:00', 'Mold'),
+('1', '12', 'Emory', '2017-06-25 05:30:00', 'Mold'),
+('1', '10', 'UChicago', '2017-07-26 06:30:00', 'Air Quality'),
+('1', '11', 'UChicago', '2017-08-27 07:30:00', 'Air Quality'),
+('1', '12', 'UChicago', '2017-09-28 08:30:00', 'Mold'),
+('0', '13', 'UChicago', '2017-10-29 09:30:00', 'Mold'),
+('1', '12', 'Poi0', '2017-01-31 15:32:00', 'Mold'),
+('1', '42', 'Poi0', '2017-02-15 16:12:00', 'Mold'),
+('0', '4', 'Poi0', '2017-02-24 04:29:00', 'Air Quality'),
+('1', '34', 'Poi0', '2017-02-01 03:57:00', 'Air Quality'),
+('1', '15', 'Poi1', '2017-01-31 15:32:00', 'Mold'),
+('0', '46', 'Poi1', '2017-02-15 16:12:00', 'Mold'),
+('1', '8', 'Poi1', '2017-02-24 04:29:00', 'Air Quality'),
+('1', '37', 'Poi1', '2017-02-01 03:57:00', 'Air Quality'),
+('1', '12', 'Poi2', '2017-01-31 15:32:00', 'Mold'),
+('0', '42', 'Poi2', '2017-02-15 16:12:00', 'Mold'),
+('1', '4', 'Poi2', '2017-02-24 04:29:00', 'Air Quality'),
+('1', '34', 'Poi2', '2017-02-01 03:57:00', 'Air Quality'),
+('1', '4', 'Poi3', '2017-02-24 04:29:00', 'Air Quality'),
+('0', '34', 'Poi3', '2017-02-01 03:57:00', 'Air Quality'),
+('1', '15', 'Poi3', '2017-01-31 15:32:00', 'Mold'),
+('1', '46', 'Poi3', '2017-02-15 16:12:00', 'Mold'),
+('1', '8', 'Poi4', '2017-02-24 04:29:00', 'Air Quality'),
+('1', '37', 'Poi4', '2017-02-01 03:57:00', 'Air Quality'),
+('1', '19', 'Poi5', '2017-01-31 15:32:00', 'Mold'),
+('0', '49', 'Poi5', '2017-02-15 16:12:00', 'Mold');
