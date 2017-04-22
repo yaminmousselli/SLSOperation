@@ -24,7 +24,7 @@
                     <select id="poiNameSelect" name="poiNameSelect">
                     <option>Any</option>
                     <?php
-                    $theQuery = "SELECT locationName FROM `Poi`";
+                    $theQuery = "SELECT locationName FROM Poi";
                     $theResponse = mysql_query($theQuery);
                     while($row = mysql_fetch_assoc($theResponse)) {
                         echo "<option>".$row["locationName"]."</option>";
