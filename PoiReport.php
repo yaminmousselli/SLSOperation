@@ -4,7 +4,7 @@
 <h1>Poi Report</h1>
 <script src="js/sorttable.js"></script>
 
-<table class = "sortable">
+<table class = "sortable" border= "1">
     <tr>
         <th onclick="sortTable(0)">Location</th>
         <th onclick="sortTable(1)">State</th>
