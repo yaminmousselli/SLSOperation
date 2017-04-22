@@ -50,7 +50,7 @@ VALUES
 ('Seattle', 'Washington'),
 ('Denver', 'Colorado'),
 ('El Paso', 'Texas'),
-('Altanta', 'Georgia');
+('Atlanta', 'Georgia');
 
 INSERT INTO `cityofficial`
 (`username`, `isApproved`, `title`, `city`, `state`)
@@ -71,9 +71,9 @@ INSERT INTO `datatype` (`readingType`) VALUES ('Mold'), ('Air Quality');
 INSERT INTO `poi`
 (`locationName`, `zipcode`, `flagged`, `dateFlagged`, `city`, `state`)
 VALUES
-('Georgia Tech', '30332', '1', '2017-02-23 00:00:00', 'Altanta', 'Georgia'),
-('GSU', '30333', '0', NULL, 'Altanta', 'Georgia'),
-('Emory', '30322', '0', NULL, 'Altanta', 'Georgia'),
+('Georgia Tech', '30332', '1', '2017-02-23 00:00:00', 'Atlanta', 'Georgia'),
+('GSU', '30333', '0', NULL, 'Atlanta', 'Georgia'),
+('Emory', '30322', '0', NULL, 'Atlanta', 'Georgia'),
 ('UChicago', '60637', '1', '2017-02-24 00:00:00', 'Chicago', 'Illinois'),
 ('Poi0', '77001', '0', NULL, 'Houston', 'Texas'),
 ('Poi1', '77001', '0', NULL, 'Houston', 'Texas'),
