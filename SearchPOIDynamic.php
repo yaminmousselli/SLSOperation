@@ -10,15 +10,15 @@
     include "dbConn.php";
     ?>
     <header>Operation SLS</header>
-    
+
     <div id="container">
         
         <div id="mainContent">
             <div>
-                <h3>View POIs</h3>
+                <h3>Search POIs</h3>
             </div>
-            
-            <form action="" method="post">  
+
+            <form method="post">
                 <div class="viewEntry">
                     <label for="poiNameSelect">POI Location Name</label>
                     <select id="poiNameSelect" name="poiNameSelect">
@@ -27,7 +27,7 @@
                     $theQuery = "SELECT locationName FROM Poi";
                     $theResponse = mysql_query($theQuery);
                     while($row = mysql_fetch_assoc($theResponse)) {
-                        echo "<option>".$row["locationName"]."</option>";
+                        echo "<option>" . $row["locationName"] . "</option>";
                     }
                     ?>
                     </select>
@@ -41,9 +41,10 @@
                     $theQuery = "SELECT city FROM CityState";
                     $theResponse = mysql_query($theQuery);
                     while ($row = mysql_fetch_assoc($theResponse)) {
-                        echo "<option>".$row["city"]."</option>";
+                        echo "<option>" . $row["city"] . "</option>";
                     }
-                    ?></select>
+                    ?>
+                    </select>
                 </div>
 
                 <div class="viewEntry">
@@ -54,9 +55,10 @@
                         $theQuery = "SELECT DISTINCT state FROM CityState";
                         $theResponse = mysql_query($theQuery);
                         while ($row = mysql_fetch_assoc($theResponse)) {
-                            echo "<option>".$row["state"]."</option>";
+                            echo "<option>" . $row["state"] . "</option>";
                         }
-                    ?></select>
+                    ?>
+                    </select>
                 </div>
 
                 <div class="viewEntry">
@@ -71,7 +73,9 @@
 
                 <div class="viewEntry" id="dateFlaggedEntry">
                     <label for="date">Date Flagged</label>
-                    <input type="datetime-local" id="dateFlaggedStart" name="dateFlaggedStart"> <p>to</p> <input type="datetime-local" id="dateFlaggedEnd" name="dateFlaggedEnd"> 
+                    <input type="date" id="dateFlaggedStart" name="dateFlaggedStart">
+                    <p>to</p>
+                    <input type="date" id="dateFlaggedEnd" name="dateFlaggedEnd"> 
                 </div>
 
                 <div id="filterControls">
@@ -93,7 +97,7 @@
                 window.location.assign("PoiDetail.php");
             }
             </script>
-            
+
             <script src="js/sorttable.js"></script>
             <table class="sortable">
                 <tr>
@@ -104,102 +108,72 @@
                     <th>Flagged</th>
                     <th>Date Flagged</th>
                 </tr>
-            
-            
-            
-        
+
             <?php
-            
-            
             if (count($_POST) != 0){
-                
-                
-                /**echo $_POST['isFlagged'];
-                echo gettype($_POST['isFlagged']);
-                if($_POST['isFlagged'] == 'isFlagged'){
-                    echo "FRICKIN GOSH DARM!!!";
-                }**/
-                /**
-                if($_POST['isFlagged'] == 'isFlagged'){
-                    $theQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi 
-                     WHERE locationName = '".$_POST['poiNameSelect']."' AND
-                    city = '".$_POST['citySelect']."' AND
-                    state = '".$_POST['stateSelect']."' AND
-                    zipcode = '".$_POST['zipCode']."' AND
-                    flagged = '1' AND
-                    dateFlagged BETWEEN '".$_POST['dateFlaggedStart']."' AND '".$_POST['dateFlaggedEnd']."'";
-                }
-                
-                if($_POST['isFlagged'] != 'isFlagged'){
-                    $theQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi 
-                    WHERE locationName = '".$_POST['poiNameSelect']."' AND
-                    city = '".$_POST['citySelect']."' AND
-                    state = '".$_POST['stateSelect']."' AND
-                    zipcode = '".$_POST['zipCode']."' AND
-                    flagged = '0'";
-                }
-                **/
-                
-                $theQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi 
-                    WHERE ";
+                $poiQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi WHERE ";
                 if($_POST['poiNameSelect'] != 'Any'){
-                    $theQuery = $theQuery."locationName = '".$_POST['poiNameSelect']."' AND ";
+                    $poiQuery .= "locationName = '" . $_POST['poiNameSelect'] . "' AND ";
                 }
                 
                 if($_POST['citySelect'] != 'Any'){
-                    $theQuery = $theQuery."city = '".$_POST['citySelect']."' AND ";
+                    $poiQuery .= "city = '" . $_POST['citySelect'] . "' AND ";
                 }
-                
+
                 if($_POST['stateSelect'] != 'Any'){
-                    $theQuery = $theQuery."state = '".$_POST['stateSelect']."' AND ";
+                    $poiQuery .= "state = '" . $_POST['stateSelect'] . "' AND ";
                 }
-                
+
                 if($_POST['zipCode'] != ''){
-                    $theQuery = $theQuery."zipcode = '".$_POST['zipCode']."' AND ";
+                    $poiQuery .= "zipcode = '" . $_POST['zipCode'] . "' AND ";
                 }
-                
+
                 if($_POST['isFlagged'] != 'isFlagged'){
-                    $theQuery = $theQuery."flagged = '0' AND ";
+                    $poiQuery .= "flagged = '0' AND ";
                 }
-                
+
                 if($_POST['isFlagged'] == 'isFlagged'){
-                    $theQuery = $theQuery."flagged = '1' AND ";
+                    $poiQuery .= "flagged = '1' AND ";
                 }
-                
+
                 if($_POST['dateFlaggedStart'] != ''){
-                    $theQuery = $theQuery."dateFlagged >= '".$_POST['dateFlaggedStart']."' AND ";
+                    $poiQuery .= "dateFlagged >= '" . $_POST['dateFlaggedStart'] . "' AND ";
                 }
-                
+
                 if($_POST['dateFlaggedEnd'] != ''){
-                    $theQuery = $theQuery."dateFlagged <= '".$_POST['dateFlaggedEnd']."' AND ";
+                    $poiQuery .= "dateFlagged <= '" . $_POST['dateFlaggedEnd'] . "' AND ";
                 }
-                
-                $theQuery = $theQuery."1";
-                
-                echo $theQuery;
-                $theResponse = mysql_query($theQuery);
-                while ($row = mysql_fetch_assoc($theResponse)) {
-                    if($row['flagged'] == 0){
-                        $row['flagged'] = 'no';
-                        $row['dateFlagged'] = 'N/A';
+
+                // If there is a trailng AND, get rid of it
+                $lastAndIndex = strrpos($poiQuery, "AND ");
+                if ($lastAndIndex !== FALSE) {
+                    $poiQuery = substr($poiQuery, 0, $lastAndIndex);
+                }
+
+                $pois = mysql_query($poiQuery);
+                while ($poi = mysql_fetch_assoc($pois)) {
+                    // Edit output of table
+                    if($poi['flagged'] == 0) {
+                        $poi['flagged'] = 'no';
+                        $poi['dateFlagged'] = 'N/A';
+                    } else {
+                        $poi['flagged'] = "yes";
                     }
-                    echo "<tr><td><button onclick=\"goPoiDetail('".$row['locationName']."')\">".$row['locationName']."</button></td><td>".$row['state']."</td><td>".$row['city']."</td><td>".$row['zipcode']."</td><td>".$row['flagged']."</td><td>".$row['dateFlagged']."</td></tr>";
-                    
+
+                    // Build table row
+                    $tableRow = "<tr>";
+                    $tableRow .= "<td><button onclick=\"goPoiDetail('".$poi['locationName']."')\">".$poi['locationName']."</button></td>";
+                    $tableRow .= "<td>" . $poi['state'] . "</td>";
+                    $tableRow .= "<td>" . $poi['city'] . "</td>";
+                    $tableRow .= "<td>" . $poi['zipcode'] . "</td>";
+                    $tableRow .= "<td>" . $poi['flagged'] . "</td>";
+                    $tableRow .= "<td>" . $poi['dateFlagged'] . "</td>";
+                    $tableRow .= "</tr>";   
+                    echo $tableRow;
                 }
-                
-                
-                
-                
-                
             }
-            
-            
-            
             ?>
             </table>
         </div>
-        
     </div>
-    
-    
 </html>
