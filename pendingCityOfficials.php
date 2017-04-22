@@ -17,7 +17,6 @@
     $theQuery = "SELECT User.username,email,city,state,title FROM User,CityOfficial WHERE User.username = CityOfficial.username && isApproved IS NULL GROUP BY username";
     $theResponse = mysql_query($theQuery);
 
-
     while ($row = mysql_fetch_assoc($theResponse)) {
         echo '<tr>';
         echo '<td>'.$row["username"].'</td>';
@@ -29,10 +28,7 @@
 
         echo '</tr>';
     }
-
-
 ?>
-
 
 </table>
 
@@ -47,8 +43,8 @@
         </script>
 
 </form>
-<form action = "ChooseFunctionalityAdmin.html">
-    <input type="submit" value="Back">
-</form>
+  <form action = "ChooseFunctionalityAdmin.html">
+      <input type="submit" value="Back">
+  </form>
 
 </html>
