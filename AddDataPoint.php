@@ -5,9 +5,9 @@
     <div>
         <center><h1>Add Data Point</h1></center>
     </div>
-    
+
     <?php include "dbConn.php"; ?>
-    
+
     <a href="AddLocation.php">add a new location</a>
     <br>
     <br>
@@ -25,7 +25,7 @@
         }
         ?>
         </select>
-        
+
         <br>
         <br>
 
@@ -45,7 +45,7 @@
         while($row = mysql_fetch_assoc($theResponse)) {
             echo "<option>".$row["readingType"]."</option>";
         }
-        ?>        
+        ?>
         </select>
 
         <h3>Data value</h3>
@@ -65,23 +65,4 @@
     <form action="index.html">
         <input type="submit" value="Log out" />
     </form>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>

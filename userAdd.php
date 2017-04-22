@@ -1,4 +1,3 @@
-
 <script>
 function userTaken(){
     localStorage.setItem("didItFail","That username is already taken!");
@@ -23,12 +22,13 @@ function success(){
 
     include "dbConn.php";
 
-    $theQuery = "SELECT * FROM User WHERE username='".$_POST['username']."' OR email = '".$_POST['email']."'";
+    $theQuery = "SELECT username, email FROM User WHERE username='".$_POST['username']."' OR email = '".$_POST['email']."'";
     $theResponse = mysql_query($theQuery);
+    $userExists = mysql_fetch_assoc($theResponse);
 
     $fail = false;
-    while ($row = mysql_fetch_assoc($theResponse)) {
-        if($row['username'] == $_POST['username']){
+    if ($userExists != NULL) {
+        if($row['username'] == $_POST['username']) {
             echo "<script>userTaken();</script>";
             $fail = true;
         }
@@ -50,7 +50,7 @@ function success(){
         $type = 'cityOfficial';
     }
 
-    
+
     if($_POST['password'] == $_POST['passwordConfirm']) {
 
         if(!$fail){
@@ -74,5 +74,4 @@ function success(){
         echo "<script>passwordMismatch();</script>";
         $fail = true;
     }
-
 ?>
