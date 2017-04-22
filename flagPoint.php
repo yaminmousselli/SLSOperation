@@ -13,18 +13,19 @@
     <?php
 
     include "dbConn.php";
-    
+
     $theQuery = "SELECT locationName, flagged FROM Poi WHERE locationName = '".$_POST['locationName']."'";
     $theResponse = mysql_query($theQuery);
-    
+    $toBeFlagged = mysql_fetch_assoc($theResponse)
+
     $flagged = false;
-    while($row = mysql_fetch_assoc($theResponse)) {
-        if($row['flagged'] == 1){
+    if ($toBeFlagged != NULL) {
+        if($row['flagged'] == 1) {
             $flagged = true;
         }
     }
-    
-    if(!$flagged){
+
+    if (!$flagged) {
         $theQuery = "UPDATE Poi SET  flagged =  1,dateFlagged = '".date(DATE_ATOM,1)."' WHERE  locationName = '".$_POST['locationName']."'";
         $theResponse = mysql_query($theQuery);
         if(!$theResponse){
@@ -32,8 +33,8 @@
         }
         echo "<script>wasFlagged()</script>";
     }
-    
-    if($flagged){
+
+    if ($flagged) {
         $theQuery = "UPDATE Poi SET  flagged =  0,dateFlagged = NULL WHERE  locationName = '".$_POST['locationName']."'";
         $theResponse = mysql_query($theQuery);
         if(!$theResponse){
@@ -41,7 +42,5 @@
         }
         echo "<script>wasNotFlagged()</script>";
     }
-    
-  
 
-    ?>
+  ?>

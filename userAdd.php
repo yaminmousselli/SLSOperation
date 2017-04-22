@@ -24,10 +24,10 @@ function success(){
 
     $theQuery = "SELECT username, email FROM User WHERE username='".$_POST['username']."' OR email = '".$_POST['email']."'";
     $theResponse = mysql_query($theQuery);
-    $row = mysql_fetch_assoc($theResponse);
+    $userExists = mysql_fetch_assoc($theResponse);
 
     $fail = false;
-    if ($row != null) {
+    if ($userExists != NULL) {
         if($row['username'] == $_POST['username']) {
             echo "<script>userTaken();</script>";
             $fail = true;

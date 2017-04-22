@@ -12,7 +12,7 @@
 </script>
 
 <?php
-    include "dbConn.php"; 
+    include "dbConn.php";
     var_dump($_POST);
     echo "<br>";
     $theValues = "'".$_POST["newLocation"]."','".$_POST["zipCode"]."','".$_POST["City"]."', '".$_POST["State"]."'";
@@ -22,7 +22,7 @@
     echo mysql_error();
 
     if(!$theResponse){
-    	echo "<script>pointFailed();</script>"; 
+    	echo "<script>pointFailed();</script>";
     }
 
     if($theResponse){
@@ -30,10 +30,4 @@
     }
 
  ?>
-
-
-
-
-
-
 </html>
