@@ -31,7 +31,7 @@
         <option>Any</option>
         <?php
 
-        $theQuery = "SELECT readingType FROM `DataType`";
+        $theQuery = "SELECT readingType FROM DataType";
         $theResponse = mysql_query($theQuery);
 
         while($row = mysql_fetch_assoc($theResponse)) {

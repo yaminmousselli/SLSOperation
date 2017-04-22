@@ -5,7 +5,7 @@ include "dbConn.php";
 $usernameEntered = $_POST["username"];
 $passwordEntered = $_POST["password"];
 
-$usersBasic = "SELECT username, password, userType FROM `User` WHERE `username` = '$usernameEntered' AND `password` = '$passwordEntered'";
+$usersBasic = "SELECT username, password, userType FROM User WHERE username = '$usernameEntered' AND password = '$passwordEntered'";
 $users = mysql_query($usersBasic);
 
 if ($user = mysql_fetch_assoc($users)) {
@@ -19,7 +19,7 @@ if ($user = mysql_fetch_assoc($users)) {
 
     if ($type == "cityOfficial") {
         // If an official is not approved, don't permit log in
-        $officialApproved = "SELECT isApproved FROM `CityOfficial` WHERE `username` = '$usernameEntered'";
+        $officialApproved = "SELECT isApproved FROM CityOfficial WHERE username = '$usernameEntered'";
         $officials = mysql_query($officialApproved);
         $official = mysql_fetch_assoc($officials);
 
