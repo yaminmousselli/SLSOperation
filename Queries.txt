@@ -98,8 +98,28 @@ Search POI Queries
 PoiDetail Queries
 	"SELECT readingType FROM DataType"	
 
-	"SELECT * FROM DataPoint 
-        WHERE isApproved = 1 AND "DEPENDS ON WHAT THE IF STATEMENT CONCATENATES"
+	if (count($_POST) != 1){        
+        $pointQuery = "SELECT * FROM DataPoint 
+        WHERE isApproved = 1 AND ";
+
+        if($_POST['minValue'] != ''){
+            $pointQuery .= "dataValue >= " . $_POST['minValue']." AND "; 
+        }
+        if($_POST['maxValue'] != ''){
+            $pointQuery .= "dataValue <= " . $_POST['maxValue']." AND ";
+        }
+        if($_POST['locationName'] != ''){
+            $pointQuery .= "locationName = '" . $_POST['locationName']."' AND ";
+        }
+        if($_POST['minDatetime'] != ''){
+            $pointQuery .= "recordTime >= '" . $_POST['minDatetime']."' AND ";
+        }
+        if($_POST['maxDatetime'] != ''){
+            $pointQuery .= "recordTime <= '" . $_POST['maxDatetime']."' AND ";
+        }
+        if($_POST['dataType'] != 'Any'){
+            $pointQuery .= "type = '" . $_POST['dataType']."' AND ";
+        }
 
 PoiReport Queries
 	"SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint GROUP BY locationName, type ORDER BY locationName"
