@@ -35,7 +35,7 @@
                 <div class="registrationFormEntry">
                     <label>Confirm Password</label>
                     <input type="password" id="passConf" onchange="validatePass()"
-                        name="passwordConfrim" required> <br>
+                        name="passwordConfirm" required> <br>
                 </div>
 
       <script>
