@@ -5,7 +5,7 @@
       <link rel="stylesheet" type="text/css" href="css/registration.css">
       <script type="text/javascript" src="js/registration.js"></script>
     </head>
-    <?php include "dbConn.php"; ?> 
+    <?php include "dbConn.php"; ?>
 
     <header>Operation SLS</header>
 
@@ -19,7 +19,7 @@
                 <div class="registrationFormEntry">
                     <label>Username</label>
                     <input type="text" name="username" id="username" required>
-                    
+
                 </div>
 
                 <div class="registrationFormEntry">
@@ -50,12 +50,14 @@
               <option>City Official</option>
             </select><br>
         </div>
-        
+        <Label> Fill out title, city, and state if you choose city officials
+
+        </label>
         <div class="labelWidth"
             <label> Title:</label>
             <input type="text" name="title">
         </div>
-        
+
         <div class="labelWidth"
             <label>State:</label>
             <select name="officialState" id='offStateSelect'>
@@ -91,15 +93,10 @@
 
   <button onclick=goToLogin() id="btnCancel"> Cancel </button>
 
-
-  
   <script>
     document.getElementById('errorMsg').innerHTML = localStorage.getItem("didItFail");
     localStorage.setItem("didItFail","");
   </script>
  </form>
-  
 
-  
-  
 </html>
