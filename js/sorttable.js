@@ -248,8 +248,16 @@ sorttable = {
     return aa-bb;
   },
   sort_alpha: function(a,b) {
-    if (a[0]==b[0]) return 0;
-    if (a[0]<b[0]) return -1;
+    aE = a;
+    bE = b;
+    if (typeof aE[0].toLowerCase === "function") {
+      aE[0] = aE[0].toLowerCase();
+    }
+    if (typeof bE[0].toLowerCase === "function") {
+      bE[0] = bE[0].toLowerCase();
+    }
+    if (aE[0]==bE[0]) return 0;
+    if (aE[0]<bE[0]) return -1;
     return 1;
   },
   sort_ddmm: function(a,b) {

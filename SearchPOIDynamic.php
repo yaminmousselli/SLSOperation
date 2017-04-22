@@ -99,7 +99,7 @@
             </script>
 
             <script src="js/sorttable.js"></script>
-            <table class="sortable">
+            <table class="sortable" border = "1">
                 <tr>
                     <th>Location Name</th>
                     <th>State</th>

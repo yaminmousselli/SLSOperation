@@ -4,7 +4,11 @@
 <h1>Poi Report</h1>
 <script src="js/sorttable.js"></script>
 
+<<<<<<< HEAD
 <table class = "sortable" border = "1">
+=======
+<table class = "sortable" border= "1">
+>>>>>>> a1a5ff3b93eee7b9b2e4a10c39cb1200a968b09a
     <tr>
         <th onclick="sortTable(0)">Location</th>
         <th onclick="sortTable(1)">State</th>
