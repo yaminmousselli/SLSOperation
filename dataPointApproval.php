@@ -5,17 +5,16 @@
         window.location.assign("pendingDataPoints.php")
     }
     function pointAccepted(){
-
-            localStorage.setItem("didFail","Data points were approved");
+        localStorage.setItem("didFail","Data points were approved");
         window.location.assign("pendingDataPoints.php")
     }
     function pointRejected(){
-            localStorage.setItem("didFail","Data points were rejected");
+        localStorage.setItem("didFail","Data points were rejected");
         window.location.assign("pendingDataPoints.php")
     }
 </script>
 
-<?php 
+<?php
     include "dbConn.php";
 
     $selected = $_POST['ch'];
@@ -26,9 +25,9 @@
             echo $locationName;
             $recordTime = substr($value, strpos($value,"|") + 1);
             echo $recordTime;
-            $theQuery = "UPDATE DataPoint SET isApproved = 1 WHERE locationName = '$locationName' && recordTime = '$recordTime'";     
+            $theQuery = "UPDATE DataPoint SET isApproved = 1 WHERE locationName = '$locationName' && recordTime = '$recordTime'";
             $theResponse = mysql_query($theQuery);
-            echo mysql_error(); 
+            echo mysql_error();
         }
         if ($theResponse) {
             echo "<script>pointAccepted();</script>";
@@ -40,7 +39,7 @@
             echo $value;
             $locationName = substr($value,0,strrpos($value,"|" ));
             $recordTime = substr($value, strpos($value,"|") + 1);
-            $theQuery = "UPDATE DataPoint SET isApproved = 0 WHERE locationName = '$locationName' && recordTime = '$recordTime'";     
+            $theQuery = "UPDATE DataPoint SET isApproved = 0 WHERE locationName = '$locationName' && recordTime = '$recordTime'";
             $theResponse = mysql_query($theQuery);
             echo mysql_error();
         }
@@ -49,7 +48,7 @@
         }
     }
         if(!$theResponse){
-                echo "<script>pointFailed();</script>"; 
+                echo "<script>pointFailed();</script>";
             }
     //should alter the isApproved value in CityOfficials
  ?>
