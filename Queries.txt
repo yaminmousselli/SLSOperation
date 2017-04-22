@@ -61,6 +61,7 @@ Search POI Queries
 	"SELECT city FROM CityState"
 	"SELECT DISTINCT state FROM CityState"
 
+	<?php
 	$poiQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi WHERE ";
                 if($_POST['poiNameSelect'] != 'Any'){
                     $poiQuery .= "locationName = '" . $_POST['poiNameSelect'] . "' AND ";
@@ -93,11 +94,11 @@ Search POI Queries
                 if($_POST['dateFlaggedEnd'] != ''){
                     $poiQuery .= "dateFlagged <= '" . $_POST['dateFlaggedEnd'] . "' AND ";
                 }
-
+    ?>
 
 PoiDetail Queries
 	"SELECT readingType FROM DataType"	
-
+	<?php
 	if (count($_POST) != 1){        
         $pointQuery = "SELECT * FROM DataPoint 
         WHERE isApproved = 1 AND ";
@@ -120,8 +121,18 @@ PoiDetail Queries
         if($_POST['dataType'] != 'Any'){
             $pointQuery .= "type = '" . $_POST['dataType']."' AND ";
         }
+    ?>
 
 PoiReport Queries
-	"SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint GROUP BY locationName, type ORDER BY locationName"
-
-	"SELECT locationName, city, state, flagged FROM Poi WHERE "DEPENDS ON THE IF STATEMENT"
+	"SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint WHERE isApproved = 1 GROUP BY locationName, type ORDER BY locationName"
+	
+	<?php
+	$theQuery = "SELECT locationName, city, state, flagged FROM Poi WHERE ";
+    $arrlength = count($c);
+    for($x = 0; $x < $arrlength; $x++){
+        $theQuery = $theQuery."locationName != '".$c[$x]['locationName']."' AND ";
+    }
+    $theQuery = $theQuery." 1";
+    ?>
+    
+    "SELECT locationName, city, state, flagged FROM Poi"
