@@ -3,7 +3,7 @@
 
 <h1>Poi Report</h1>
 <script src="js/sortthetable.js"></script>
-<script src="js/poi_report.js"></script>
+
 <table id="ReportTable">
     <tr>
         <th onclick="sortTable(0)">Location</th>
