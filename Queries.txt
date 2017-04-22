@@ -1,0 +1,107 @@
+Login Queries
+	"SELECT username, password, userType FROM User WHERE username = '$usernameEntered' AND password = '$passwordEntered'"
+
+	if type is CityOfficial
+		"SELECT isApproved FROM CityOfficial WHERE username = '$usernameEntered'"
+	
+
+Registration Queries
+	"SELECT city FROM CityState"
+
+
+	userAdd Queries
+		"SELECT username, email FROM User WHERE username='".$_POST['username']."' OR email = '".$_POST['email']."'"
+
+		"INSERT INTO User(username, email, password, userType) VALUES (LCASE('".$_POST['username']."'),'".$_POST['email']."','".$_POST['password']."','".$type."')"
+
+		"INSERT INTO CityOfficial(username, title, city, state) VALUES ('".$_POST['username']."','".$_POST['title']."','".$_POST['officialCity']."','".$_POST['officialState']."')"
+
+Add New Data Point Queries
+	"SELECT locationName FROM Poi"
+	"SELECT readingType FROM DataType"
+
+	pointAdd Queries
+
+		$theValues = "'".$_POST["newDataValue"]."','".$_POST["newDataLocation"]."','".$_POST["newDataTime"]."','".$_POST["newDataType"]."'"
+
+		"INSERT INTO DataPoint (dataValue,locationName,recordTime,type) VALUES (".$theValues.")"
+
+Add New Location Queries
+	"SELECT city FROM CityState"
+	"SELECT DISTINCT state FROM CityState"
+
+	LocationAddDatabse Queries
+		
+		$theValues = "'".$_POST["newLocation"]."','".$_POST["zipCode"]."','".$_POST["City"]."', '".$_POST["State"]."'"
+
+		"INSERT INTO Poi (locationName,zipcode,city, state) VALUES(".$theValues.")"
+
+Pending DataPoints Queries
+	"SELECT * FROM DataPoint WHERE isApproved IS NULL"
+
+	dataPointApproval Queries
+		if Accept
+		"UPDATE DataPoint SET isApproved = 1 WHERE locationName = '$locationName' && recordTime = '$recordTime'"
+
+		if Reject
+		"UPDATE DataPoint SET isApproved = 0 WHERE locationName = '$locationName' && recordTime = '$recordTime'"
+
+Pending City Officials Queries
+	"SELECT User.username,email,city,state,title FROM User,CityOfficial WHERE User.username = CityOfficial.username && isApproved IS NULL GROUP BY username"
+
+	AcceptCityOfficial Queries
+		If Accept
+		"UPDATE CityOfficial SET isApproved = 1 WHERE username = '$value'"
+
+		If Reject
+		"UPDATE CityOfficial SET isApproved = 0 WHERE username = '$value'"
+
+Search POI Queries
+	"SELECT locationName FROM Poi"
+	"SELECT city FROM CityState"
+	"SELECT DISTINCT state FROM CityState"
+
+	$poiQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi WHERE ";
+                if($_POST['poiNameSelect'] != 'Any'){
+                    $poiQuery .= "locationName = '" . $_POST['poiNameSelect'] . "' AND ";
+                }
+                
+                if($_POST['citySelect'] != 'Any'){
+                    $poiQuery .= "city = '" . $_POST['citySelect'] . "' AND ";
+                }
+
+                if($_POST['stateSelect'] != 'Any'){
+                    $poiQuery .= "state = '" . $_POST['stateSelect'] . "' AND ";
+                }
+
+                if($_POST['zipCode'] != ''){
+                    $poiQuery .= "zipcode = '" . $_POST['zipCode'] . "' AND ";
+                }
+
+                if($_POST['isFlagged'] != 'isFlagged'){
+                    $poiQuery .= "flagged = '0' AND ";
+                }
+
+                if($_POST['isFlagged'] == 'isFlagged'){
+                    $poiQuery .= "flagged = '1' AND ";
+                }
+
+                if($_POST['dateFlaggedStart'] != ''){
+                    $poiQuery .= "dateFlagged >= '" . $_POST['dateFlaggedStart'] . "' AND ";
+                }
+
+                if($_POST['dateFlaggedEnd'] != ''){
+                    $poiQuery .= "dateFlagged <= '" . $_POST['dateFlaggedEnd'] . "' AND ";
+                }
+
+
+PoiDetail Queries
+	"SELECT readingType FROM DataType"	
+
+	"SELECT * FROM DataPoint 
+        WHERE isApproved = 1 AND "DEPENDS ON WHAT THE IF STATEMENT CONCATENATES"
+
+PoiReport Queries
+	"SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint GROUP BY locationName, type ORDER BY locationName"
+
+	"SELECT locationName, city, state, flagged FROM Poi WHERE "DEPENDS ON THE IF STATEMENT"
