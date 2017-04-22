@@ -2,9 +2,9 @@
 
 
 <h1>Poi Report</h1>
-<script src="js/sortthetable.js"></script>
+<script src="js/sorttable.js"></script>
 
-<table id="ReportTable">
+<table class = "sortable">
     <tr>
         <th onclick="sortTable(0)">Location</th>
         <th onclick="sortTable(1)">State</th>
@@ -56,7 +56,7 @@
             
             
         }
-        
+
 
 
         $notIn = true;
@@ -81,7 +81,29 @@
     */
     
     
-    $theQuery = "SELECT locationName, city, state, flagged FROM Poi";
+
+    
+    $theQuery = "SELECT locationName, city, state, flagged FROM Poi WHERE ";
+    $arrlength = count($c);
+    for($x = 0; $x < $arrlength; $x++){
+        $theQuery = $theQuery."locationName != '".$c[$x]['locationName']."' AND ";
+    }
+    $theQuery = $theQuery." 1";
+    //echo $theQuery;
+    $theResponse =  mysql_query($theQuery);
+    while ($row = mysql_fetch_assoc($theResponse)) {
+        $c[count($c)]['locationName'] = $row['locationName'];
+        $c[count($c)]['minAQ'] = ' ';
+        $c[count($c)]['avgAQ'] = ' ';
+        $c[count($c)]['maxAQ']= ' ';
+        $c[count($c)]['minMold'] = ' ';
+        $c[count($c)]['avgMold'] = ' ';
+        $c[count($c)]['maxMold'] = ' ';
+    }
+        
+   
+
+   $theQuery = "SELECT locationName, city, state, flagged FROM Poi";
     $theResponse = mysql_query($theQuery);
     while ($row = mysql_fetch_assoc($theResponse)) {
         $arrlength = count($c);
@@ -99,6 +121,9 @@
         }
     }
     
+    
+    
+    
     $theQuery = "SELECT COUNT(*),locationName FROM DataPoint GROUP BY locationName";
     $theResponse =  mysql_query($theQuery);
     while ($row = mysql_fetch_assoc($theResponse)) {
@@ -114,10 +139,11 @@
     
     $arrlength = count($c);
     for($x = 0; $x < $arrlength; $x++){
-
+        if($c[$x]['locationName'] != ''){
         //if(count($c[$x]) == 13){//I should figure out why $c[$x] has 13 attributes but whateva
         echo "<tr><td>".$c[$x]['locationName']."</td><td>".$c[$x]['city']."</td><td>".$c[$x]['state']."</td><td>".$c[$x]['minMold']."</td><td>".$c[$x]['avgMold']."</td><td>".$c[$x]['maxMold']."</td><td>".$c[$x]['minAQ']."</td><td>".$c[$x]['avgAQ']."</td><td>".$c[$x]['maxAQ']."</td><td>".$c[$x]['numPoints']."</td><td>".$c[$x]['flagged']."</td></tr>";
         //}
+        }   
     }
     
     
