@@ -4,11 +4,7 @@
 <h1>Poi Report</h1>
 <script src="js/sorttable.js"></script>
 
-<<<<<<< HEAD
-<table class = "sortable" border = "1">
-=======
 <table class = "sortable" border= "1">
->>>>>>> a1a5ff3b93eee7b9b2e4a10c39cb1200a968b09a
     <tr>
         <th onclick="sortTable(0)">Location</th>
         <th onclick="sortTable(1)">State</th>
@@ -36,7 +32,7 @@
         exit;
     }*/
 
-    $theQuery = "SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint GROUP BY locationName, type ORDER BY locationName";
+    $theQuery = "SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint WHERE isApproved = 1 GROUP BY locationName, type ORDER BY locationName";
     $theResponse = mysql_query($theQuery);
     
     
@@ -128,7 +124,7 @@
     
     
     
-    $theQuery = "SELECT COUNT(*),locationName FROM DataPoint GROUP BY locationName";
+    $theQuery = "SELECT COUNT(*),locationName FROM DataPoint WHERE isApproved = 1 GROUP BY locationName";
     $theResponse =  mysql_query($theQuery);
     while ($row = mysql_fetch_assoc($theResponse)) {
         $arrlength = count($c);
