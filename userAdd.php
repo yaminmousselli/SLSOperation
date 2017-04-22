@@ -52,19 +52,27 @@ function success(){
 
 
     if($_POST['password'] == $_POST['passwordConfirm']) {
-
+        $oneFail = false;
         if(!$fail){
             $theQuery = "INSERT INTO User(username, email, password, userType) VALUES (LCASE('".$_POST['username']."'),'".$_POST['email']."','".$_POST['password']."','".$type."')";
             $theResponse = mysql_query($theQuery);
-            echo mysql_error();
+            //echo mysql_error();
+            if(!$theResponse){
+                $theQuery = "DELETE FROM User WHERE username = '".$_POST['username']."'";
+                echo "Registration failed. Please check your inputs and try again!";
+                echo '<form action="Registration.php"><input type="submit" value="Back" /></form>';
+                $oneFail = true;
+            }
             if($type =='cityOfficial'){
                 $theQuery = "INSERT INTO CityOfficial(username, title, city, state) VALUES ('".$_POST['username']."','".$_POST['title']."','".$_POST['officialCity']."','".$_POST['officialState']."')";
                 $theResponse = mysql_query($theQuery);
-                echo mysql_error();
+                //echo mysql_error();
             }
 
-            if(!$theResponse){
-                echo "catastrophic failure gg no re";
+            if(!$theResponse and !$oneFail){
+                $theQuery = "DELETE FROM User WHERE username = '".$_POST['username']."'";
+                echo "Registration failed. Please check your inputs and try again!";
+                echo '<form action="Registration.php"><input type="submit" value="Back" /></form>';
             }
             if($theResponse){
                 echo "<script>success();</script>";
