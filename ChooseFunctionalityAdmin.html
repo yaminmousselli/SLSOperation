@@ -1,8 +1,7 @@
 <html>
 
     <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/functionality_admin.css">
+
 
     <script type="text/javascript" src="js/functionality_admin.js"></script>
     </head>
@@ -16,12 +15,18 @@
                 <h2>Choose Functionality</h2>
             </div>
             
-            <button id="goToPendingOfficials" class="functionality" onclick="goToPendingOfficials()">Filter/Search POI</button>
-            <button id="goToPendingDataPoints" class="functionality" onclick="goToPendingDataPoints()">POI Report</button>
+            <form action="pendingCityOfficials.php">
+            <button>Pending City Officials</button>
+            </form>
+            <form action="pendingDataPoints.php">
+            <button>Pending Data Points</button>
+            </form>
         </div>
 
         <div class="logout">
-            <button onclick="goToLogin()">Log out</button>
+            <form action="index.html">
+            <button>Log Out</button>
+            </form>
         </div>
     </div>
     
