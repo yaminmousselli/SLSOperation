@@ -1,4 +1,4 @@
-INSERT INTO `user`
+INSERT INTO `User`
 (`username`, `email`, `password`, `userType`) 
 VALUES
 ('off0', 'off0@test.com', 'test', 'cityOfficial'),
@@ -27,7 +27,7 @@ VALUES
 ('adm3', 'adm3@test.com', 'test', 'admin'),
 ('admin', 'admin@test.com', 'admin', 'admin');
 
-INSERT INTO `citystate`
+INSERT INTO `CityState`
 (`city`, `state`)
 VALUES
 ('New York', 'New York'),
@@ -52,7 +52,7 @@ VALUES
 ('El Paso', 'Texas'),
 ('Atlanta', 'Georgia');
 
-INSERT INTO `cityofficial`
+INSERT INTO `CityOfficial`
 (`username`, `isApproved`, `title`, `city`, `state`)
 VALUES
 ('off0', '1', 'title0', 'New York', 'New York'),
@@ -66,9 +66,9 @@ VALUES
 ('off8', NULL, 'title8', 'Dallas', 'Texas'),
 ('off9', NULL, 'title9', 'San Jose', 'California');
 
-INSERT INTO `datatype` (`readingType`) VALUES ('Mold'), ('Air Quality');
+INSERT INTO `DataType` (`readingType`) VALUES ('Mold'), ('Air Quality');
 
-INSERT INTO `poi`
+INSERT INTO `Poi`
 (`locationName`, `zipcode`, `flagged`, `dateFlagged`, `city`, `state`)
 VALUES
 ('Georgia Tech', '30332', '1', '2017-02-23 00:00:00', 'Atlanta', 'Georgia'),
@@ -82,7 +82,7 @@ VALUES
 ('Poi4', '77001', '0', NULL, 'Houston', 'Texas'),
 ('Poi5', '77001', '0', NULL, 'Houston', 'Texas');
 
-INSERT INTO `datapoint`
+INSERT INTO `DataPoint`
 (`isApproved`, `dataValue`, `locationName`, `recordTime`, `type`)
 VALUES
 ('1', '12', 'Georgia Tech', '2017-01-31 15:32:00', 'Mold'),
