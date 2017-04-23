@@ -16,17 +16,17 @@
 
     $theQuery = "SELECT locationName, flagged FROM Poi WHERE locationName = '".$_POST['locationName']."'";
     $theResponse = mysql_query($theQuery);
-    $toBeFlagged = mysql_fetch_assoc($theResponse)
+    $toBeFlagged = mysql_fetch_assoc($theResponse);
 
     $flagged = false;
     if ($toBeFlagged != NULL) {
-        if($row['flagged'] == 1) {
+        if($toBeFlagged['flagged'] == 1) {
             $flagged = true;
         }
     }
 
     if (!$flagged) {
-        $theQuery = "UPDATE Poi SET  flagged =  1,dateFlagged = '".date(DATE_ATOM,1)."' WHERE  locationName = '".$_POST['locationName']."'";
+        $theQuery = "UPDATE Poi SET  flagged =  1,dateFlagged = '".date(DATE_ATOM)."' WHERE  locationName = '".$_POST['locationName']."'";
         $theResponse = mysql_query($theQuery);
         if(!$theResponse){
             mysql_error();
