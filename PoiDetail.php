@@ -113,9 +113,9 @@
     </table>
 
             
-            
-            
-            
+    <form action = "ChooseFunctionalityOfficial.html">
+        <input type="submit" value="Back">
+    </form>  
     
     
     
