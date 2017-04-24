@@ -1,13 +1,19 @@
 Login Queries
-	"SELECT username, password, userType FROM User WHERE username = '$usernameEntered' AND password = '$passwordEntered'"
+    
+    Check if login is valid
+    
+        "SELECT username, password, userType FROM User WHERE username = '$usernameEntered' AND password = '$passwordEntered'"
 
-	if type is CityOfficial
+	If type is CityOfficial
+    
 		"SELECT isApproved FROM CityOfficial WHERE username = '$usernameEntered'"
 	
 
 Registration Queries
-	"SELECT city FROM CityState"
 
+    Dropdown queries
+        "SELECT city FROM CityState"
+        "SELECT DISTINCT state FROM CityState"
 
 	userAdd Queries
 		"SELECT username, email FROM User WHERE username='".$_POST['username']."' OR email = '".$_POST['email']."'"
@@ -17,8 +23,11 @@ Registration Queries
 		"INSERT INTO CityOfficial(username, title, city, state) VALUES ('".$_POST['username']."','".$_POST['title']."','".$_POST['officialCity']."','".$_POST['officialState']."')"
 
 Add New Data Point Queries
-	"SELECT locationName FROM Poi"
-	"SELECT readingType FROM DataType"
+    
+    Dropdown queries
+    
+        "SELECT locationName FROM Poi"
+        "SELECT readingType FROM DataType"
 
 	pointAdd Queries
 
@@ -27,19 +36,26 @@ Add New Data Point Queries
 		"INSERT INTO DataPoint (dataValue,locationName,recordTime,type) VALUES (".$theValues.")"
 
 Add New Location Queries
-	"SELECT city FROM CityState"
-	"SELECT DISTINCT state FROM CityState"
 
-	LocationAddDatabse Queries
+    Dropdown queries
+    
+        "SELECT city FROM CityState"
+        "SELECT DISTINCT state FROM CityState"
+
+	Add location to database
 		
 		$theValues = "'".$_POST["newLocation"]."','".$_POST["zipCode"]."','".$_POST["City"]."', '".$_POST["State"]."'"
 
 		"INSERT INTO Poi (locationName,zipcode,city, state) VALUES(".$theValues.")"
 
 Pending DataPoints Queries
-	"SELECT * FROM DataPoint WHERE isApproved IS NULL"
+    
+    Get pending data points
+    
+        "SELECT * FROM DataPoint WHERE isApproved IS NULL"
 
 	dataPointApproval Queries
+    
 		if Accept
 		"UPDATE DataPoint SET isApproved = 1 WHERE locationName = '$locationName' && recordTime = '$recordTime'"
 
@@ -47,9 +63,14 @@ Pending DataPoints Queries
 		"UPDATE DataPoint SET isApproved = 0 WHERE locationName = '$locationName' && recordTime = '$recordTime'"
 
 Pending City Officials Queries
-	"SELECT User.username,email,city,state,title FROM User,CityOfficial WHERE User.username = CityOfficial.username && isApproved IS NULL GROUP BY username"
 
-	AcceptCityOfficial Queries
+    Get pending city officials
+    
+        "SELECT User.username,email,city,state,title FROM User,CityOfficial WHERE User.username = CityOfficial.username && isApproved IS NULL GROUP BY username"
+
+	
+    Accept/Reject city officials
+    
 		If Accept
 		"UPDATE CityOfficial SET isApproved = 1 WHERE username = '$value'"
 
@@ -57,50 +78,58 @@ Pending City Officials Queries
 		"UPDATE CityOfficial SET isApproved = 0 WHERE username = '$value'"
 
 Search POI Queries
-	"SELECT locationName FROM Poi"
-	"SELECT city FROM CityState"
-	"SELECT DISTINCT state FROM CityState"
 
-	<?php
-	$poiQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi WHERE ";
-                if($_POST['poiNameSelect'] != 'Any'){
-                    $poiQuery .= "locationName = '" . $_POST['poiNameSelect'] . "' AND ";
-                }
-                
-                if($_POST['citySelect'] != 'Any'){
-                    $poiQuery .= "city = '" . $_POST['citySelect'] . "' AND ";
-                }
+    Dropdown menus
+    
+        "SELECT locationName FROM Poi"
+        "SELECT city FROM CityState"
+        "SELECT DISTINCT state FROM CityState"
+    
+    Filter search query
+	
+        $poiQuery = "SELECT locationName, city, state, zipcode, flagged, dateFlagged FROM Poi WHERE ";
+            if($_POST['poiNameSelect'] != 'Any'){
+                $poiQuery .= "locationName = '" . $_POST['poiNameSelect'] . "' AND ";
+            }
+            
+            if($_POST['citySelect'] != 'Any'){
+                $poiQuery .= "city = '" . $_POST['citySelect'] . "' AND ";
+            }
 
-                if($_POST['stateSelect'] != 'Any'){
-                    $poiQuery .= "state = '" . $_POST['stateSelect'] . "' AND ";
-                }
+            if($_POST['stateSelect'] != 'Any'){
+                $poiQuery .= "state = '" . $_POST['stateSelect'] . "' AND ";
+            }
 
-                if($_POST['zipCode'] != ''){
-                    $poiQuery .= "zipcode = '" . $_POST['zipCode'] . "' AND ";
-                }
+            if($_POST['zipCode'] != ''){
+                $poiQuery .= "zipcode = '" . $_POST['zipCode'] . "' AND ";
+            }
 
-                if($_POST['isFlagged'] != 'isFlagged'){
-                    $poiQuery .= "flagged = '0' AND ";
-                }
+            if($_POST['isFlagged'] != 'isFlagged'){
+                $poiQuery .= "flagged = '0' AND ";
+            }
 
-                if($_POST['isFlagged'] == 'isFlagged'){
-                    $poiQuery .= "flagged = '1' AND ";
-                }
+            if($_POST['isFlagged'] == 'isFlagged'){
+                $poiQuery .= "flagged = '1' AND ";
+            }
 
-                if($_POST['dateFlaggedStart'] != ''){
-                    $poiQuery .= "dateFlagged >= '" . $_POST['dateFlaggedStart'] . "' AND ";
-                }
+            if($_POST['dateFlaggedStart'] != ''){
+                $poiQuery .= "dateFlagged >= '" . $_POST['dateFlaggedStart'] . "' AND ";
+            }
 
-                if($_POST['dateFlaggedEnd'] != ''){
-                    $poiQuery .= "dateFlagged <= '" . $_POST['dateFlaggedEnd'] . "' AND ";
-                }
-    ?>
+            if($_POST['dateFlaggedEnd'] != ''){
+                $poiQuery .= "dateFlagged <= '" . $_POST['dateFlaggedEnd'] . "' AND ";
+            }
+    
 
 PoiDetail Queries
-	"SELECT readingType FROM DataType"	
-	<?php
-	if (count($_POST) != 1){        
-        $theQuery = "SELECT * FROM DataPoint 
+        
+    ReadingType Select
+    
+        $theQuery = "SELECT readingType FROM DataType";
+    
+    Show Correct Data Points
+    
+        "$theQuery = "SELECT * FROM DataPoint 
         WHERE isApproved = 1 AND ";
         
         if($_POST['minValue'] != ''){
@@ -122,19 +151,22 @@ PoiDetail Queries
             $theQuery = $theQuery."type = '".$_POST['dataType']."' AND ";
         }
         
-        $theQuery = $theQuery."1";
-    ?>
+        $theQuery = $theQuery."1";"
 
 PoiReport Queries
-	"SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint WHERE isApproved = 1 GROUP BY locationName, type ORDER BY locationName"
-	
-	<?php
-	$theQuery = "SELECT locationName, city, state, flagged FROM Poi WHERE ";
-    $arrlength = count($c);
-    for($x = 0; $x < $arrlength; $x++){
-        $theQuery = $theQuery."locationName != '".$c[$x]['locationName']."' AND ";
-    }
-    $theQuery = $theQuery." 1";
-    ?>
+    Choose Locations by Data Type
     
-    "SELECT locationName, city, state, flagged FROM Poi"
+        "SELECT isApproved, MIN(dataValue), AVG(dataValue), MAX(dataValue), locationName, type FROM DataPoint WHERE isApproved = 1 GROUP BY locationName, type ORDER BY locationName"
+	
+    Check for case that location has no points
+	
+        $theQuery = "SELECT locationName, city, state, flagged FROM Poi WHERE ";
+        $arrlength = count($c);
+        for($x = 0; $x < $arrlength; $x++){
+            $theQuery = $theQuery."locationName != '".$c[$x]['locationName']."' AND ";
+        }
+        $theQuery = $theQuery." 1";
+        
+        Find the city and state locations are tied to
+        
+        "SELECT locationName, city, state, flagged FROM Poi"
